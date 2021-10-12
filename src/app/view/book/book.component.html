@@ -1,0 +1,33 @@
+<div class="cover">
+  <div class="book">
+    <div (click)="pageTurned = 'backward'" class="book__page book__page--1">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/da0c2745002947.58248e8604fa2.jpg" alt="Astronaut">
+    </div>
+    <div (click)="pageTurned = 'forward'" class="book__page book__page--4">
+      <div class="page__content">
+        <h1 class="page__content-book-title">Chapter 1</h1>
+      </div>
+    </div>
+    <div class="book__page book__page--2" [ngClass]="{ 'book__page-turned': pageTurned === 'forward' }">
+      <div class="book__page-front">
+        <div class="page__content">
+          <h1 class="page__content-book-title">Lembook</h1>
+          <h2 class="page__content-author">Oskar Mikus</h2>
+          <p class="page__content-credits">
+            Jedynym sposobem pozbycia się pokusy jest uleganie jej.
+            <span>Oscar Wilde</span>
+          </p>
+          <p class="page__content-credits engagement">
+            Naciśnij
+            <span>Aby przewrócić stronę</span>
+          </p>
+          <div class="page__content-copyright">
+            <p>Łódź, MMXXI</p>
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <div class="book__page-back"></div>
+    </div>
+  </div>
+</div>
