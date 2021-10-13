@@ -52,7 +52,7 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
   display: flex;
   perspective: 1500px;
 
-  &__page {
+  &-page {
     display: grid;
     position: relative;
     width: 50%;
@@ -70,7 +70,7 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
       background-image: linear-gradient(-90deg, $page-gradient-1-dark 0, $page-gradient-2-dark 18%);
     }
 
-    &--1 {
+    &-1 {
       overflow: hidden;
       img {
         width: 100%;
@@ -78,7 +78,7 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
       }
     }
 
-    &--2 {
+    &-2 {
       position: absolute;
       right: 0;
       transform-style: preserve-3d;
@@ -87,7 +87,7 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
       cursor: pointer;
     }
 
-    &--4 {
+    &-4 {
       padding: 0 calc(#{$baseline} * 3);
     }
 
@@ -111,13 +111,14 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
       transform: rotateY(-180deg);
     }
 
-    .page__content {
+    .page-content {
       display: flex;
       flex-direction: column;
       padding: $baseline;
       height: 100%;
       position: relative;
       text-align: center;
+      color: $text-dark;
 
       &-book-title {
         font-family: $book-title;
@@ -125,7 +126,6 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 3px;
-        color: $text-dark;
         margin-top: calc(#{$baseline} * 5);
         margin-bottom: calc(#{$baseline} * 2);
       }
@@ -136,7 +136,6 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
         font-size: calc(#{$base-font-size} * 1.2);
         font-weight: 100;
         text-transform: uppercase;
-        color: $text-dark;
         border-top: 1px solid $text-dark;
         border-bottom: 1px solid $text-dark;
         display: inline-block;
@@ -160,7 +159,6 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
       }
 
       &-copyright {
-        color: $text-dark;
         position: absolute;
         width: calc(100% - (#{$baseline} * 2));
         bottom: calc(#{$baseline} * 2);
@@ -196,7 +194,7 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
 
       &-blockquote-text {
         font-family: $title;
-        font-size: calc(#{$base-font-size} * 0.67);
+        font-size: calc(#{$base-font-size} * 0.75);
         font-style: italic;
         text-align: justify;
       }
@@ -211,7 +209,7 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
 
       &-text {
         font-family: $title;
-        font-size: calc(#{$base-font-size} * 0.67);
+        font-size: calc(#{$base-font-size} * 0.75);
         text-align: justify;
         text-indent: #{$baseline};
       }
@@ -223,12 +221,13 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
         text-indent: #{$baseline};
       }
     }
-    .page__number {
+    .page-number {
+      color: $text-dark;
       position: absolute;
       bottom: #{$baseline};
       width: calc(100% - (#{$baseline} * 2));
       font-family: $title;
-      font-size: calc(#{$base-font-size} * 0.67);
+      font-size: calc(#{$base-font-size} * 0.65);
       text-align: center;
     }
   }
@@ -240,36 +239,36 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
-.btn {
-  font-family: $title;
-  color: $text-dark-smooth;
-  font-size: calc(#{$base-font-size} * 0.9);
-  text-transform: uppercase;
-  margin-bottom: calc(#{$baseline} * 1.5);
-  letter-spacing: 1px;
-  width: 100%;
-  background-color: $page-bg-dark;
-  transition: 0.25s;
-  border: none;
-  cursor: pointer;
+  & button {
+    font-family: $title;
+    color: $text-dark-smooth;
+    font-size: calc(#{$base-font-size} * 0.9);
+    text-transform: uppercase;
+    margin-bottom: calc(#{$baseline} * 1.5);
+    letter-spacing: 1px;
+    width: 100%;
+    background-color: $page-bg-dark;
+    transition: 0.25s;
+    border: none;
+    cursor: pointer;
 
-  &:hover {
-    color: $text-dark;
-    text-decoration: underline;
-  }
+    &:hover {
+      color: $text-dark;
+      text-decoration: underline;
+    }
 
-  &.google {
-    border-color: #DB4437;
-  }
-  &.apple {
-    border-color: #4CD964;
-  }
-  &.facebook {
-    border-color: #4267B2;
-  }
-  &.github {
-    border-color: #333;
+    &.google {
+      border-color: #DB4437;
+    }
+    &.apple {
+      border-color: #4CD964;
+    }
+    &.facebook {
+      border-color: #4267B2;
+    }
+    &.github {
+      border-color: #333;
+    }
   }
 }

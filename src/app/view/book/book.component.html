@@ -1,39 +1,53 @@
 <div class="cover">
   <div class="book">
-    <div  class="book__page book__page--1">
+    <div class="book-page book-page-1">
       <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/da0c2745002947.58248e8604fa2.jpg" alt="Astronaut">
     </div>
-    <div class="book__page book__page--4">
-      <div class="page__content">
-        <h1 class="page__content-book-title">Rozdział 1</h1>
-        <div class="btn-group">
-          <button type="submit" class="btn google">Zaloguj z Google</button>
-          <button type="submit" class="btn apple">Zaloguj z Apple</button>
-          <button type="submit" class="btn facebook">Zaloguj z Facebook</button>
-          <button type="submit" class="btn github">Zaloguj z Github</button>
-        </div>
+    <div class="book-page book-page-4">
+      <div class="page-content">
+        <h1 class="page-content-book-title">Rozdział 1</h1>
+        <span class="page-content-text">
+          Dołącz do wspaniałego świata niezbadanych zakątków, historii i wydań. Lorem ipsum hepsum muchachos kotos notis
+          Lorem ipsum hepsum muchachos kotos notis, Lorem ipsum hepsum muchachos kotos notis, Lorem ipsum hepsum muchach
+          Lorem ipsum hepsum muchachos kotos notis, Lorem ipsum hepsum muchachos kotos notis, Lorem ipsum hepsum muchach
+          Lorem ipsum hepsum muchachos kotos notisLorem ipsum hepsum muchachos kotos notisLorem ipsum hepsum muchachos k
+          Dołącz do wspaniałego świata niezbadanych zakątków, historii i wydań. Lorem ipsum hepsum muchachos kotos notis
+          Lorem ipsum hepsum muchachos kotos notisLorem ipsum hepsum muchachos kotos notisLorem ipsum hepsum muchachos k
+        </span>
+        <blockquote class="page-content-blockquote-text">
+          Najlepsza stronka ever, serio, serio. Że ja Cię kręcę, taki wyczes, że nic nie działa.
+        </blockquote>
+        <blockquote class="page-content-blockquote-reference"> - Paulo Cohello</blockquote>
       </div>
+      <div class="page-number">4</div>
     </div>
-    <div class="book__page book__page--2" [ngClass]="{ 'book__page-turned': pageTurned === 'forward' }">
-      <div (click)="pageTurned = 'forward'" class="book__page-front">
-        <div class="page__content">
-          <h1 class="page__content-book-title">Lembook</h1>
-          <h2 class="page__content-author">Oskar Mikus</h2>
-          <p class="page__content-credits">
+    <div class="book-page book-page-2" [ngClass]="{ 'book-page-turned': pageTurned === 'forward' }">
+      <div (click)="pageTurned = 'forward'" class="book-page-front">
+        <div class="page-content">
+          <h1 class="page-content-book-title">Lembook</h1>
+          <h2 class="page-content-author">Oskar Mikus</h2>
+          <p class="page-content-credits">
             Jedynym sposobem pozbycia się pokusy jest uleganie jej.
             <span>Oscar Wilde</span>
           </p>
-          <p class="page__content-credits engagement">
+          <p class="page-content-credits engagement">
             Naciśnij
             <span>Aby przewrócić stronę</span>
           </p>
-          <div class="page__content-copyright">
+          <div class="page-content-copyright">
             <p>Łódź, MMXXI</p>
-            <p></p>
           </div>
         </div>
       </div>
-      <div (click)="pageTurned = 'backward'" class="book__page-back"></div>
+      <div (click)="pageTurned = 'backward'" class="book-page-back">
+        <div class="btn-group">
+          <button type="submit" class="google">Zaloguj z Google</button>
+          <button type="submit" class="apple">Zaloguj z Apple</button>
+          <button type="submit" class="facebook">Zaloguj z Facebook</button>
+          <button type="submit" class="github">Zaloguj z Github</button>
+        </div>
+        <div class="page-number">3</div>
+      </div>
     </div>
   </div>
 </div>
