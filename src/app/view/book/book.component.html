@@ -1,15 +1,21 @@
 <div class="cover">
   <div class="book">
-    <div (click)="pageTurned = 'backward'" class="book__page book__page--1">
+    <div  class="book__page book__page--1">
       <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/da0c2745002947.58248e8604fa2.jpg" alt="Astronaut">
     </div>
-    <div (click)="pageTurned = 'forward'" class="book__page book__page--4">
+    <div class="book__page book__page--4">
       <div class="page__content">
-        <h1 class="page__content-book-title">Chapter 1</h1>
+        <h1 class="page__content-book-title">Rozdział 1</h1>
+        <div class="btn-group">
+          <button type="submit" class="btn google">Zaloguj z Google</button>
+          <button type="submit" class="btn apple">Zaloguj z Apple</button>
+          <button type="submit" class="btn facebook">Zaloguj z Facebook</button>
+          <button type="submit" class="btn github">Zaloguj z Github</button>
+        </div>
       </div>
     </div>
     <div class="book__page book__page--2" [ngClass]="{ 'book__page-turned': pageTurned === 'forward' }">
-      <div class="book__page-front">
+      <div (click)="pageTurned = 'forward'" class="book__page-front">
         <div class="page__content">
           <h1 class="page__content-book-title">Lembook</h1>
           <h2 class="page__content-author">Oskar Mikus</h2>
@@ -27,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="book__page-back"></div>
+      <div (click)="pageTurned = 'backward'" class="book__page-back"></div>
     </div>
   </div>
 </div>
