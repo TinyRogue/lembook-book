@@ -1,3 +1,8 @@
+/* Internal */
+$__min: 1.4vmin;
+$__preferred: calc(3vmin - 1.5vh);
+$__max: 2rem;
+
 /* Colours */
 // Light mode
 $bg-light: #FAFAFA;
@@ -12,5 +17,9 @@ $text-dark-smooth: #C9CEBD;
 
 
 /* Text */
-$baseline: 14px;
-$base-font-size: $baseline * 1.2;
+$baseline: clamp(#{$__min}, #{$__preferred}, #{$__max});
+@supports not ($baseline: clamp(#{$__min}, #{$__preferred}, #{$__max})) {
+  $baseline: min(max(#{$__preferred}, #{$__min}), #{$__max});
+}
+
+$base-font-size: calc(#{$baseline} * 1.2);

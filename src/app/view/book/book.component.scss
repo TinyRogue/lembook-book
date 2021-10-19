@@ -1,5 +1,5 @@
 @import "./src/vars";
-@import url('https://fonts.googleapis.com/css?family=Nunito|Cormorant|Nanum+Myeongjo|Tulpen+One&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Nunito|Cormorant|Nanum+Myeongjo|Coda&display=swap');
 
 // Base
 // Colours
@@ -14,10 +14,9 @@ $page-gradient-1-dark: #0F111AFF;
 $page-gradient-2-dark: #09090900;
 
 // Text
-$book-title: 'Tulpen One', sans-serif;
+$book-title: 'Coda', sans-serif;
 $title: 'Cormorant', serif;
 $body: 'Cormorant', serif;
-$sans-body: 'Nunito', sans-serif;
 
 // Size
 $book-size: 6;
@@ -25,15 +24,16 @@ $book-size: 6;
 // Calculated
 $textbook-typical-h: 7;
 $textbook-typical-w: 10;
-$book-width: calc(#{$book-size} * #{$textbook-typical-w} * #{$baseline});
-$book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
+
+$book-height: 80vmin;
+$book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typical-w}), 95vw);
 
 * {
   box-sizing: border-box;
 }
 
 :host {
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,14 +43,14 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
 .cover {
   width: $book-width;
   height: $book-height;
-  box-shadow: 0 0 100px $page-shadow-dark;
+  box-shadow: 0 0 calc(#{$baseline} * 7) $page-shadow-dark;
 }
 
 .book {
   width: 100%;
   height: 100%;
   display: flex;
-  perspective: 1500px;
+  perspective: 200vmax;
 
   &-page {
     position: relative;
@@ -60,10 +60,6 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
     transform-origin: 0 0;
     background-color: $page-bg-dark;
     background-image: linear-gradient(90deg, $page-gradient-1-dark 0, $page-gradient-2-dark 18%);
-
-    &:hover .engagement {
-      text-decoration: underline;
-    }
 
     &:nth-of-type(1) {
       background-image: linear-gradient(-90deg, $page-gradient-1-dark 0, $page-gradient-2-dark 18%);
@@ -121,7 +117,7 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
 
       &-book-title {
         font-family: $book-title;
-        font-size: calc(#{$base-font-size} * 3);
+        font-size: calc(#{$base-font-size} * 3.25);
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 3px;
@@ -132,7 +128,7 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
       &-author {
         align-self: center;
         font-family: $title;
-        font-size: calc(#{$base-font-size} * 1.2);
+        font-size: calc(#{$base-font-size} * 1.5);
         font-weight: 100;
         text-transform: uppercase;
         border-top: 1px solid $text-dark;
@@ -145,16 +141,21 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
       &-credits {
         font-family: $title;
         color: $text-dark-smooth;
-        font-size: calc(#{$base-font-size} * 0.8);
+        font-size: $base-font-size;
         text-transform: uppercase;
         margin-bottom: calc(#{$baseline} * 2);
         letter-spacing: 1px;
 
         span {
           display: block;
-          font-size: calc(#{$base-font-size} * 1.2);
+          font-size: calc(#{$base-font-size} * 1.5);
           letter-spacing: 0;
         }
+
+      }
+
+      &:hover .engagement {
+        text-decoration: underline;
       }
 
       &-copyright {
@@ -162,71 +163,44 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
         width: calc(100% - (#{$baseline} * 2));
         bottom: calc(#{$baseline} * 2);
         font-family: $title;
-        font-size: calc(#{$base-font-size} * 0.8);
+        font-size: calc(#{$base-font-size} * 0.9);
         text-transform: uppercase;
-      }
-
-      &-title {
-        font-family: $title;
-        font-size: $base-font-size;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-top: calc(#{$baseline} * 5);
-        margin-bottom: calc(#{$baseline} * 3);
-      }
-
-      &-table {
-        width: 100%;
-        margin-top: calc(#{$baseline} * 2);
-
-        td {
-          font-family: $title;
-          font-size: $base-font-size;
-          padding-bottom: calc(#{$baseline} * 1.5);
-          text-transform: uppercase;
-        }
-      }
-
-      &-blockquote {
-        margin-bottom: calc(#{$baseline} * 2);
       }
 
       &-blockquote-text {
+        margin-top: calc(#{$baseline} * 2);
+        margin-bottom: calc(#{$baseline} * 2);
         font-family: $title;
-        font-size: calc(#{$base-font-size} * 0.75);
+        font-size: $base-font-size;
         font-style: italic;
         text-align: justify;
       }
 
       &-blockquote-reference {
         font-family: $title;
-        font-size: calc(#{$base-font-size} * 0.7);
+        margin-bottom: calc(#{$baseline} * 2);
+        font-size: calc(#{$base-font-size} * 0.9);
         margin-top: calc(#{$baseline} * 0.3);
         float: right;
         text-transform: uppercase;
       }
 
       &-text {
+        padding-top: calc(#{$baseline} * 2);
         font-family: $title;
-        font-size: calc(#{$base-font-size} * 0.75);
-        text-align: justify;
-        text-indent: #{$baseline};
-      }
-
-      &-text-sans {
-        font-family: $sans-body;
-        font-size: calc(#{$base-font-size} * 0.67);
+        font-size: $base-font-size;
         text-align: justify;
         text-indent: #{$baseline};
       }
     }
+
     .page-number {
       color: $text-dark;
       position: absolute;
       bottom: #{$baseline};
       width: calc(100% - (#{$baseline} * 3.5));
       font-family: $title;
-      font-size: calc(#{$base-font-size} * 0.65);
+      font-size: calc(#{$base-font-size} * 0.8);
       text-align: center;
     }
   }
@@ -242,32 +216,44 @@ $book-height: calc(#{$book-size} * #{$textbook-typical-h} * #{$baseline});
   & button {
     font-family: $title;
     color: $text-dark-smooth;
-    font-size: calc(#{$base-font-size} * 0.9);
+    font-size: calc(#{$base-font-size} * 1.1);
     text-transform: uppercase;
-    margin-bottom: calc(#{$baseline} * 1.5);
+    margin-bottom: calc(#{$baseline} * 2);
     letter-spacing: 1px;
-    width: 100%;
+    width: auto;
     background-color: #00000000;
-    transition: 0.25s;
+    transition: 0.3s;
     border: none;
     cursor: pointer;
+    border-top: 1px groove $text-dark;
 
     &:hover {
       color: $text-dark;
-      text-decoration: underline;
+      &.google {
+        border-color: rgba(219, 68, 55, 0.7);
+      }
+      &.apple {
+        border-color: rgba(76, 217, 100, 0.7);
+      }
+      &.facebook {
+        border-color: rgba(66, 103, 178, 0.7);
+      }
+      &.github {
+        border-color: rgba(51, 51, 51, 0.7);
+      }
     }
 
     &.google {
-      border-color: #DB4437;
+      border-color: rgba(219, 68, 55, 0.15);
     }
     &.apple {
-      border-color: #4CD964;
+      border-color: rgba(76, 217, 100, 0.15);
     }
     &.facebook {
-      border-color: #4267B2;
+      border-color: rgba(66, 103, 178, 0.15);
     }
     &.github {
-      border-color: #333;
+      border-color: rgba(51, 51, 51, 0.15);
     }
   }
 }
