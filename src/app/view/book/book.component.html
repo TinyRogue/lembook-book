@@ -1,9 +1,9 @@
 <div class="cover">
   <div class="book">
-    <div class="book-page book-page-1">
+    <div class="book-page first">
       <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/da0c2745002947.58248e8604fa2.jpg" alt="Astronaut">
     </div>
-    <div class="book-page book-page-4">
+    <div class="book-page fourth">
       <div class="page-content">
         <h1 class="page-content-book-title">Rozdział 1</h1>
         <span class="page-content-text">
@@ -21,7 +21,7 @@
       </div>
       <div class="page-number">4</div>
     </div>
-    <div class="book-page book-page-2" [ngClass]="{ 'book-page-turned': pageTurned === 'forward' }">
+    <div class="book-page second-third" [ngClass]="{ 'book-page-turned': pageTurned === 'forward' }">
       <div (click)="pageTurned = 'forward'" class="book-page-front">
         <div class="page-content">
           <h1 class="page-content-book-title">Czytadło</h1>

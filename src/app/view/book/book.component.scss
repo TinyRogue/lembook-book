@@ -1,7 +1,7 @@
 @import "./src/vars";
-//@import url('https://fonts.googleapis.com/css?family=Nunito|Cormorant|Nanum+Myeongjo|Coda&display=swap');
+//TODO: Change fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito|Cormorant|Nanum+Myeongjo|Oswald&display=swap');
 
-// Base
 // Colours
 $page-bg-light: #F5F5F5;
 $page-shadow-light: #0000004C;
@@ -14,14 +14,11 @@ $page-gradient-1-dark: #0F111AFF;
 $page-gradient-2-dark: #09090900;
 
 // Text
-$book-title: 'Coda', sans-serif;
+$book-title: 'Oswald', sans-serif;
 $title: 'Cormorant', serif;
 $body: 'Cormorant', serif;
 
-// Size
-$book-size: 6;
-
-// Calculated
+// Proportions
 $textbook-typical-h: 7;
 $textbook-typical-w: 10;
 
@@ -65,7 +62,7 @@ $book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typ
       background-image: linear-gradient(-90deg, $page-gradient-1-dark 0, $page-gradient-2-dark 18%);
     }
 
-    &-1 {
+    &.first {
       overflow: hidden;
       img {
         width: 100%;
@@ -73,7 +70,7 @@ $book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typ
       }
     }
 
-    &-2 {
+    &.second-third {
       position: absolute;
       right: 0;
       transform-style: preserve-3d;
@@ -82,7 +79,7 @@ $book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typ
       cursor: pointer;
     }
 
-    &-4 {
+    &.fourth {
       padding: 0 calc(#{$baseline} * 3);
     }
 
@@ -145,8 +142,10 @@ $book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typ
         text-transform: uppercase;
         margin-bottom: calc(#{$baseline} * 2);
         letter-spacing: 1px;
+        line-height: calc(#{$baseline} * 2);
 
         span {
+          margin-top: calc(#{$baseline} * 0.5);
           display: block;
           font-size: calc(#{$base-font-size} * 1.5);
           letter-spacing: 0;
@@ -191,6 +190,7 @@ $book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typ
         font-size: $base-font-size;
         text-align: justify;
         text-indent: #{$baseline};
+        line-height: calc(#{$baseline} * 1.9);
       }
     }
 
@@ -230,16 +230,16 @@ $book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typ
     &:hover {
       color: $text-dark;
       &.google {
-        border-color: rgba(219, 68, 55, 0.7);
+        border-color: rgba(219, 68, 55, 0.85);
       }
       &.apple {
-        border-color: rgba(76, 217, 100, 0.7);
+        border-color: rgba(76, 217, 100, 0.85);
       }
       &.facebook {
-        border-color: rgba(66, 103, 178, 0.7);
+        border-color: rgba(66, 103, 178, 0.85);
       }
       &.github {
-        border-color: rgba(51, 51, 51, 0.7);
+        border-color: rgba(51, 51, 51, 0.85);
       }
     }
 
