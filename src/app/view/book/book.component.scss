@@ -237,8 +237,16 @@ $book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typ
       font-size: calc(#{$base-font-size} * 0.9);
       padding: 0;
       margin: 0;
-      span {
+      button {
+        padding: 0;
+        margin: 0;
         color: $arctic-blue;
+        font-size: inherit;
+        border-top: none;
+      }
+
+      :hover {
+        border-color: $arctic-blue;
       }
     }
   }
