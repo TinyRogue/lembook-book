@@ -221,29 +221,48 @@ $book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typ
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: $baseline;
-    border-bottom: 1px $text-dark solid;
     width: 100%;
+    :hover {
+      border-color: $text-dark;
+    }
 
     button {
-      padding: 0;
-      margin:  0 0 $baseline;
+      padding: calc(#{$baseline} * 0.5);
+      margin-bottom: $baseline;
+      border-top: 1px groove rgba(201, 206, 189, 0.18);
+      border-bottom: 1px groove rgba(201, 206, 189, 0.18);
     }
-    p {
-      font-size: calc(#{$base-font-size} * 0.6);
-      padding: 0;
-      margin: 0 0 calc(2 * #{$baseline});
 
+    p {
+      font-size: calc(#{$base-font-size} * 0.9);
+      padding: 0;
+      margin: 0;
       span {
-        color: $text-dark-smooth;
+        color: $arctic-blue;
       }
+    }
+  }
+
+  & .divider {
+    width: 100%;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(#{$baseline} * 2);
+    span {
+      margin: calc(#{$baseline} * 0.5);
+      height: calc(#{$baseline} * 0.5);
+      width: calc(#{$baseline} * 0.5);
+      background-color: $text-dark;
+      border-radius: 50%;
     }
   }
 
   & button  {
     font-family: $title;
     color: $text-dark-smooth;
-    font-size: calc(#{$base-font-size} * 1.1);
+    font-size: calc(#{$base-font-size} * 1.2);
     text-transform: uppercase;
     margin-bottom: calc(#{$baseline} * 2);
     letter-spacing: 1px;
