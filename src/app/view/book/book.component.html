@@ -1,4 +1,4 @@
-<div class="cover">
+<div #book class="cover">
   <div class="book">
     <div class="book-page first">
       <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/da0c2745002947.58248e8604fa2.jpg" alt="Astronaut">
@@ -41,6 +41,10 @@
       </div>
       <div (click)="pageTurned = 'backward'" class="book-page-back">
         <div class="btn-group">
+          <div class="lembook-login">
+            <button (click)="blockPageTurn()" type="submit">Zaloguj z Lembook</button>
+            <p>Nie masz konta? <span>Zarejestruj się!</span></p>
+          </div>
           <button type="submit" class="google">Zaloguj z Google</button>
           <button type="submit" class="apple">Zaloguj z Apple</button>
           <button type="submit" class="facebook">Zaloguj z Facebook</button>

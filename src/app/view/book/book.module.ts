@@ -8,8 +8,7 @@ import {BookComponent} from "./book.component";
     BookComponent,
   ],
   imports: [
-    CommonModule
-
+    CommonModule,
   ],
   providers: [],
   exports: [
