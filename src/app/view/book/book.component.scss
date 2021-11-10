@@ -297,7 +297,7 @@ $book-width: min(calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typ
     }
 
     &.google, &.apple, &.facebook, &.github {
-      border-top: 1px groove #00000000;
+      border-bottom: 1px groove #00000000;
     }
 
     &.google {
