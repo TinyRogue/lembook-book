@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { gql } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
-import { UserReq } from '@models/user-req.json';
+import { RegistrationReq } from '@models/register-req.json';
 
 const REGISTER = gql`
-  mutation register($user: NewUser!) {
-    createUser(input: $user) {
+  mutation register($registration: Registration!) {
+    register(input: $registration) {
       res
+      error
     }
   }
 `;
@@ -15,11 +16,11 @@ const REGISTER = gql`
 export class RegisterService {
   constructor(private readonly apollo: Apollo) {}
 
-  register(u: UserReq) {
+  register(r: RegistrationReq) {
     return this.apollo.mutate({
       mutation: REGISTER,
       variables: {
-        user: u,
+        registration: r,
       },
     });
   }

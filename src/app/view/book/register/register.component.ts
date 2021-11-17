@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './register.service';
-import { UserReq } from '@models/user-req.json';
+import { RegistrationReq } from '@models/register-req.json';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   register(username: string, password: string) {
-    const u: UserReq = { username, password };
+    const u: RegistrationReq = { username, password };
     this.gqlService.register({ username, password }).subscribe(
       (data) => {
         console.log(data);
