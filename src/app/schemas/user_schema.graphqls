@@ -1,0 +1,33 @@
+type User {
+  username: String!
+  identifier: String!
+}
+
+type TempRes {
+  res: String!
+}
+
+input NewUser {
+  username: String!
+  password: String!
+}
+
+input Login {
+  username: String!
+  password: String!
+}
+
+input RefreshTokenInput{
+  token: String!
+}
+
+type Query {
+  ping: String!
+  users: [User!]!
+}
+
+type Mutation {
+  createUser(input: NewUser!): TempRes!
+  login(input: Login!): String!
+  refreshToken(input: RefreshTokenInput!): String!
+}

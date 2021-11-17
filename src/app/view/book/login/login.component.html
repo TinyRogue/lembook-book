@@ -1,1 +1,15 @@
-<p>login works!</p>
+<label for="email"></label>
+<input #email type="email" id="email" name="email" placeholder="E-mail" />
+<fa-icon [icon]="['fas', 'user']"></fa-icon>
+<label for="password"></label>
+<input
+  #password
+  type="password"
+  id="password"
+  name="password"
+  placeholder="Hasło"
+/>
+<fa-icon [icon]="['fas', 'key']"></fa-icon>
+<button (click)="login(email.value, password.value)" type="submit">
+  Zaloguj się
+</button>

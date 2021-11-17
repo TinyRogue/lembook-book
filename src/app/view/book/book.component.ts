@@ -1,4 +1,6 @@
-import {Component, ElementRef, ViewChild} from "@angular/core";
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { slideInAnimation } from '@animations/slide-in';
 
 type direction = 'forward' | 'backward';
 
@@ -6,18 +8,22 @@ type direction = 'forward' | 'backward';
   selector: 'app-book',
   templateUrl: 'book.component.html',
   styleUrls: ['book.component.scss'],
+  animations: [slideInAnimation],
 })
 export class BookComponent {
-  pageTurned: direction  = 'backward';
+  pageTurned: direction = 'backward';
 
   @ViewChild('book')
   private readonly book!: ElementRef;
 
-  // login(service: 'google' | 'facebook' | 'apple' |'github') {
-    // this.book.nativeElement.classList.add('jumped-in');
-  // }
+  constructor(readonly router: Router) {}
 
   blockPageTurn() {
-    setTimeout(() => this.pageTurned = 'forward', 0);
+    setTimeout(() => (this.pageTurned = 'forward'), 0);
+  }
+
+  async turnThePage(dir: direction) {
+    this.pageTurned = dir;
+    await this.router.navigate(['/']);
   }
 }

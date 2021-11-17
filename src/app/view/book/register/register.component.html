@@ -1,1 +1,23 @@
-<p>register works!</p>
+<label for="email"></label>
+<input #email type="email" id="email" name="email" placeholder="E-mail" />
+<fa-icon [icon]="['fas', 'user']"></fa-icon>
+<label for="password"></label>
+<input
+  #password
+  type="password"
+  id="password"
+  name="password"
+  placeholder="Hasło"
+/>
+<fa-icon [icon]="['fas', 'key']"></fa-icon>
+<label for="repeat-password"></label>
+<input
+  type="password"
+  id="repeat-password"
+  name="repeat-password"
+  placeholder="Powtórz hasło"
+/>
+<fa-icon [icon]="['fas', 'key']"></fa-icon>
+<button type="submit" (click)="register(email.value, password.value)">
+  Zarejestruj się
+</button>
