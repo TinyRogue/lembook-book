@@ -11,5 +11,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  login(username: string, password: string) {}
+  login(username: string, password: string) {
+    this.gqlService.login({ username, password }).subscribe();
+  }
 }

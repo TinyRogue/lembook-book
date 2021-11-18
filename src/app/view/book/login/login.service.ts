@@ -1,14 +1,25 @@
 import { Injectable } from '@angular/core';
 import { gql } from '@apollo/client/core';
-import { Mutation } from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
+import { LoginReq } from '@models/login-req.json';
+
+const LOGIN = gql`
+  mutation login($login: Login!) {
+    login(input: $login) {
+      res
+    }
+  }
+`;
 
 @Injectable()
-export class LoginService extends Mutation {
-  document = gql`
-    mutation login($lr: Login!) {
-      login(input: $lr) {
-        token
-      }
-    }
-  `;
+export class LoginService {
+  constructor(private readonly apollo: Apollo) {}
+  login(l: LoginReq) {
+    return this.apollo.mutate({
+      mutation: LOGIN,
+      variables: {
+        login: l,
+      },
+    });
+  }
 }

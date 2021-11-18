@@ -7,7 +7,6 @@ const REGISTER = gql`
   mutation register($registration: Registration!) {
     register(input: $registration) {
       res
-      error
     }
   }
 `;
