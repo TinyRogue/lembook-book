@@ -2,32 +2,6 @@
 //TODO: Change fonts
 //@import url('https://fonts.googleapis.com/css?family=Nunito|Cormorant|Nanum+Myeongjo|Oswald&display=swap');
 
-// Colours
-$page-bg-light: #f5f5f5;
-$page-shadow-light: #0000004c;
-$page-gradient-1-light: #e3e3e3ff;
-$page-gradient-2-light: #f7f7f700;
-
-$page-bg-dark: #08090d;
-$page-shadow-dark: #000000cc;
-$page-gradient-1-dark: #0d0f18;
-$page-gradient-2-dark: #0b0b0b00;
-
-// Text
-$book-title: "Oswald", sans-serif;
-$title: "Cormorant", serif;
-$body: "Cormorant", serif;
-
-// Proportions
-$textbook-typical-h: 7;
-$textbook-typical-w: 10;
-
-$book-height: 80vmin;
-$book-width: min(
-  calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typical-w}),
-  95vw
-);
-
 * {
   box-sizing: border-box;
 }

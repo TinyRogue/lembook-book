@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +15,54 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private readonly gqlService: LoginService) {}
+  form: FormGroup | undefined;
+  credentials = { email: '', password: '' };
 
-  ngOnInit(): void {}
+  constructor(
+    private readonly gqlService: LoginService,
+    private readonly router: Router
+  ) {}
 
-  login(username: string, password: string) {
-    this.gqlService.login({ username, password }).subscribe();
+  ngOnInit() {
+    this.form = new FormGroup({
+      email: new FormControl(this.credentials.email, [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new FormControl(this.credentials.password, [
+        Validators.required,
+      ]),
+    });
+  }
+
+  login() {
+    this.credentials = this.form!.getRawValue();
+    if (this.form?.valid) {
+      this.gqlService
+        .login({
+          username: this.credentials.email,
+          password: this.credentials.password,
+        })
+        .pipe(
+          tap({
+            next: async (data) => {
+              console.log(data);
+              await this.router.navigate(['/']);
+            },
+            error: (data) => {
+              console.log(data);
+            },
+          })
+        )
+        .subscribe();
+    }
+  }
+
+  get email() {
+    return this.form!.get('email');
+  }
+
+  get password() {
+    return this.form!.get('password');
   }
 }

@@ -5,18 +5,42 @@ $__max: 2rem;
 
 /* Colours */
 // Light mode
-$bg-light: #FAFAFA;
-$text-light: #2A2935;
-$text-light-smooth: #19191D;
+$bg-light: #fafafa;
+$text-light: #2a2935;
+$text-light-smooth: #19191d;
 
+// Light mode
+$page-bg-light: #f5f5f5;
+$page-shadow-light: #0000004c;
+$page-gradient-1-light: #e3e3e3ff;
+$page-gradient-2-light: #f7f7f700;
+
+$page-bg-dark: #08090d;
+$page-shadow-dark: #000000cc;
+$page-gradient-1-dark: #0d0f18;
+$page-gradient-2-dark: #0b0b0b00;
+
+// Text
+$book-title: "Oswald", sans-serif;
+$title: "Cormorant", serif;
+$body: "Cormorant", serif;
+
+// Proportions
+$textbook-typical-h: 7;
+$textbook-typical-w: 10;
+
+$book-height: 80vmin;
+$book-width: min(
+  calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typical-w}),
+  95vw
+);
 
 // Dark mode
-$bg-dark: #181D27;
-$text-dark: #C9CEBD;
-$text-dark-smooth: #C9CEBD;
+$bg-dark: #181d27;
+$text-dark: #c9cebd;
+$text-dark-smooth: #c9cebd;
 
-$arctic-blue: #87C0D0;
-
+$arctic-blue: #87c0d0;
 
 /* Text */
 $baseline: clamp(#{$__min}, #{$__preferred}, #{$__max});

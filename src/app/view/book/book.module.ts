@@ -11,10 +11,16 @@ import {
 import { faBook, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from './login/login.service';
 import { RegisterService } from './register/register.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BookComponent, LoginComponent, RegisterComponent],
-  imports: [CommonModule, AppRoutingModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+  ],
   providers: [LoginService, RegisterService],
   exports: [BookComponent],
 })
