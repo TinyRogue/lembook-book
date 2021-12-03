@@ -25,14 +25,14 @@
           *ngIf="router.url === '/'"
           class="page-content-blockquote-text"
         >
-          Najlepsza stronka ever, serio, serio. Że ja Cię kręcę, taki wyczes, że
-          nic nie działa.
+          To, co czytasz, kiedy nie musisz tego robić, decyduje o tym, kim
+          będziesz, kiedy nie możesz temu zaradzić.
         </blockquote>
         <blockquote
           *ngIf="router.url === '/'"
           class="page-content-blockquote-reference"
         >
-          - Paulo Cohello
+          - Oscar Wilde
         </blockquote>
         <router-outlet></router-outlet>
       </div>
@@ -44,7 +44,7 @@
     >
       <div (click)="turnThePage('forward')" class="book-page-front">
         <div class="page-content">
-          <h1 class="page-content-book-title">Czytadło</h1>
+          <h1 class="page-content-book-title">Lembook</h1>
           <h2 class="page-content-author">Oskar Mikus</h2>
           <p class="page-content-credits">
             Jedynym sposobem pozbycia się pokusy jest uleganie jej.

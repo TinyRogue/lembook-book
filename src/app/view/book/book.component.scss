@@ -1,6 +1,4 @@
 @import "./src/vars";
-//TODO: Change fonts
-//@import url('https://fonts.googleapis.com/css?family=Nunito|Cormorant|Nanum+Myeongjo|Oswald&display=swap');
 
 * {
   box-sizing: border-box;
@@ -103,7 +101,7 @@
       color: $text-dark;
 
       &-book-title {
-        font-family: $book-title;
+        font-family: $big-serif;
         font-size: calc(#{$base-font-size} * 3.25);
         font-weight: bold;
         text-transform: uppercase;
@@ -114,7 +112,7 @@
 
       &-author {
         align-self: center;
-        font-family: $title;
+        font-family: $serif;
         font-size: calc(#{$base-font-size} * 1.5);
         font-weight: 100;
         text-transform: uppercase;
@@ -126,7 +124,7 @@
       }
 
       &-credits {
-        font-family: $title;
+        font-family: $serif;
         color: $text-dark-smooth;
         font-size: $base-font-size;
         text-transform: uppercase;
@@ -150,7 +148,7 @@
         position: absolute;
         width: calc(100% - (#{$baseline} * 2));
         bottom: calc(#{$baseline} * 2);
-        font-family: $title;
+        font-family: $serif;
         font-size: calc(#{$base-font-size} * 0.9);
         text-transform: uppercase;
       }
@@ -158,14 +156,14 @@
       &-blockquote-text {
         margin-top: calc(#{$baseline} * 2);
         margin-bottom: calc(#{$baseline} * 2);
-        font-family: $title;
+        font-family: $serif;
         font-size: $base-font-size;
         font-style: italic;
         text-align: justify;
       }
 
       &-blockquote-reference {
-        font-family: $title;
+        font-family: $serif;
         margin-bottom: calc(#{$baseline} * 2);
         font-size: calc(#{$base-font-size} * 0.9);
         margin-top: calc(#{$baseline} * 0.3);
@@ -175,7 +173,7 @@
 
       &-text {
         padding-top: calc(#{$baseline} * 2);
-        font-family: $title;
+        font-family: $serif;
         font-size: $base-font-size;
         text-align: justify;
         text-indent: #{$baseline};
@@ -188,7 +186,7 @@
       position: absolute;
       bottom: #{$baseline};
       width: calc(100% - (#{$baseline} * 3.5));
-      font-family: $title;
+      font-family: $serif;
       font-size: calc(#{$base-font-size} * 0.8);
       text-align: center;
     }
@@ -203,7 +201,8 @@
   align-items: center;
 
   & .lembook-login {
-    color: $text-dark;
+    font-family: $serif;
+    color: $text-dark-smooth;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -260,7 +259,7 @@
   }
 
   & button {
-    font-family: $title;
+    font-family: $serif;
     color: $text-dark-smooth;
     font-size: calc(#{$base-font-size} * 1.2);
     text-transform: uppercase;

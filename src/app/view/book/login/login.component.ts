@@ -2,17 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['../action-page.scss'],
 })
 export class LoginComponent implements OnInit {
   form: FormGroup | undefined;
