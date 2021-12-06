@@ -5,6 +5,7 @@ import { BookModule } from './view/book/book.module';
 import { AppRoutingModule } from './app.routing.module';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentsModule } from './pkg/components/components.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

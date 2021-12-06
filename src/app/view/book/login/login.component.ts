@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LoginService } from './login.service';
-import { tap } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['../action-page.scss'],
+  styleUrls: ['../action-page.scss', 'login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  @Output() loadingEmitter = new EventEmitter<boolean>();
   form: FormGroup | undefined;
   credentials = { email: '', password: '' };
 
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.credentials = this.form!.getRawValue();
     if (this.form?.valid) {
+      this.loadingEmitter.emit(true);
       this.gqlService
         .login({
           username: this.credentials.email,
@@ -47,7 +49,8 @@ export class LoginComponent implements OnInit {
             error: (data) => {
               console.log(data);
             },
-          })
+          }),
+          finalize(() => this.loadingEmitter.emit(false))
         )
         .subscribe();
     }

@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RegisterService } from './register.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
 import { namedRegexValidator } from '../../../pkg/validators/named-regex.validator';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['../action-page.scss'],
+  styleUrls: ['../action-page.scss', 'register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  @Output() loadingEmitter = new EventEmitter<boolean>();
   form: FormGroup | undefined;
   credentials = { email: '', password: '', repeatedPassword: '' };
 
@@ -44,6 +45,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.credentials = this.form!.getRawValue();
     if (this.form?.valid) {
+      this.loadingEmitter.emit(true);
       this.gqlService
         .register({
           username: this.credentials.email,
@@ -58,7 +60,8 @@ export class RegisterComponent implements OnInit {
             error: (data) => {
               console.log(data);
             },
-          })
+          }),
+          finalize(() => this.loadingEmitter.emit(false))
         )
         .subscribe();
     }

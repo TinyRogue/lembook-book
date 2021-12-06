@@ -1,73 +1,76 @@
 <form [formGroup]="form!" (keydown.enter)="register()">
   <fieldset>
-    <div>
-      <fa-icon [icon]="['fas', 'user']"></fa-icon>
-      <label for="email"></label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="E-mail"
-        autocomplete="email"
-        (focusout)="register()"
-        formControlName="email"
-        required
-        class="form-control"
-      />
-      <ng-container *ngIf="email!.invalid && (email!.dirty || email!.touched)">
-        <div *ngIf="email!.errors!.required" class="warning">
-          Proszę uzupełnić e-mail.
-        </div>
-        <div *ngIf="email!.errors!.email" class="warning">
-          Niepoprawny adres e-mail.
-        </div>
-      </ng-container>
-    </div>
+    <input autocomplete="off" name="hidden" type="text" style="display: none" />
+    <div class="input-group">
+      <div class="field">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          autocomplete="email"
+          (focusout)="register()"
+          required
+          class="form-control"
+        />
+        <label>E-mail</label>
+        <!--        <ng-container-->
+        <!--          *ngIf="email!.invalid && (email!.dirty || email!.touched)"-->
+        <!--        >-->
+        <!--          <div *ngIf="email!.errors!.required" class="warning">-->
+        <!--            Proszę uzupełnić e-mail.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="email!.errors!.email" class="warning">-->
+        <!--            Niepoprawny adres e-mail.-->
+        <!--          </div>-->
+        <!--        </ng-container>-->
+      </div>
 
-    <div>
-      <fa-icon [icon]="['fas', 'key']"></fa-icon>
-      <label for="password"></label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Hasło"
-        autocomplete="password"
-        (focusout)="register()"
-        formControlName="password"
-        required
-        class="form-control gradient-border"
-      />
-      <ng-container
-        *ngIf="password!.invalid && (password!.dirty || password!.touched)"
-      >
-        <div *ngIf="password!.errors!.required" class="warning">
-          Proszę uzupełnić hasło.
-        </div>
-        <div *ngIf="password!.errors!.hasNumber" class="warning">
-          Hasło musi zawierać przynajmniej jedną cyfrę.
-        </div>
-        <div *ngIf="password!.errors!.hasCapitalLetter" class="warning">
-          Hasło musi zawierać przynajmniej jedną wielką literę.
-        </div>
-        <div *ngIf="password!.errors!.hasMinorLetter" class="warning">
-          Hasło musi zawierać przynajmniej jedną małą literę.
-        </div>
-        <div *ngIf="password!.errors!.hasSpecialSign" class="warning">
-          Hasło musi zawierać przynajmniej jeden znak specjalny.
-        </div>
-      </ng-container>
-    </div>
-
-    <div>
-      <fa-icon [icon]="['fas', 'key']"></fa-icon>
-      <label for="repeat-password"></label>
-      <input
-        type="password"
-        id="repeat-password"
-        name="repeat-password"
-        placeholder="Powtórz hasło"
-      />
+      <div class="field">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          autocomplete="new-password"
+          (focusout)="register()"
+          required
+          class="form-control"
+        />
+        <label>Hasło</label>
+        <!--        <ng-container-->
+        <!--          *ngIf="password!.invalid && (password!.dirty || password!.touched)"-->
+        <!--        >-->
+        <!--          <div *ngIf="password!.errors!.required" class="warning">-->
+        <!--            Proszę uzupełnić hasło.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="password!.errors!.hasNumber" class="warning">-->
+        <!--            Hasło musi zawierać przynajmniej jedną cyfrę.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="password!.errors!.hasCapitalLetter" class="warning">-->
+        <!--            Hasło musi zawierać przynajmniej jedną wielką literę.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="password!.errors!.hasMinorLetter" class="warning">-->
+        <!--            Hasło musi zawierać przynajmniej jedną małą literę.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="password!.errors!.hasSpecialSign" class="warning">-->
+        <!--            Hasło musi zawierać przynajmniej jeden znak specjalny.-->
+        <!--          </div>-->
+        <!--        </ng-container>-->
+      </div>
+      <div class="field">
+        <input
+          type="password"
+          required
+          id="repeat-password"
+          name="repeat-password"
+          formControlName="repeat-password"
+          autocomplete="new-password"
+          (focusout)="register()"
+          class="form-control"
+        />
+        <label>Powtórz hasło</label>
+      </div>
     </div>
   </fieldset>
 </form>

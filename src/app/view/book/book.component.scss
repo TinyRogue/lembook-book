@@ -308,3 +308,9 @@
     }
   }
 }
+
+app-loader {
+  position: absolute;
+  right: calc(#{$baseline} * 4);
+  top: calc(#{$baseline} * 2);
+}
