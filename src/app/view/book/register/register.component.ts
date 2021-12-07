@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RegisterService } from './register.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { finalize, tap } from 'rxjs/operators';
 import { namedRegexValidator } from '../../../pkg/validators/named-regex.validator';
 
@@ -15,10 +14,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup | undefined;
   credentials = { email: '', password: '', repeatedPassword: '' };
 
-  constructor(
-    private readonly gqlService: RegisterService,
-    private readonly router: Router
-  ) {}
+  constructor(private readonly gqlService: RegisterService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -55,7 +51,6 @@ export class RegisterComponent implements OnInit {
           tap({
             next: async (data) => {
               console.log(data);
-              await this.router.navigate(['/']);
             },
             error: (data) => {
               console.log(data);

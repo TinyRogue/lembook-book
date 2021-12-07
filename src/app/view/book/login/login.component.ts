@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LoginService } from './login.service';
 import { finalize, tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private readonly gqlService: LoginService,
-    private readonly router: Router
+    private readonly snack: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
           tap({
             next: async (data) => {
               console.log(data);
-              await this.router.navigate(['/']);
             },
             error: (data) => {
               console.log(data);
