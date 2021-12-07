@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup | undefined;
   credentials = { email: '', password: '', repeatedPassword: '' };
 
-  constructor(private readonly gqlService: RegisterService) {}
+  constructor(private readonly _gqlService: RegisterService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
     this.credentials = this.form!.getRawValue();
     if (this.form?.valid) {
       this.loadingEmitter.emit(true);
-      this.gqlService
+      this._gqlService
         .register({
           username: this.credentials.email,
           password: this.credentials.password,

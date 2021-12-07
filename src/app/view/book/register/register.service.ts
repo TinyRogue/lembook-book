@@ -13,10 +13,10 @@ const REGISTER = gql`
 
 @Injectable()
 export class RegisterService {
-  constructor(private readonly apollo: Apollo) {}
+  constructor(private readonly _apollo: Apollo) {}
 
   register(r: RegistrationReq) {
-    return this.apollo.mutate({
+    return this._apollo.mutate({
       mutation: REGISTER,
       variables: {
         registration: r,

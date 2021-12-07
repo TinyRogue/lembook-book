@@ -13,9 +13,9 @@ const LOGIN = gql`
 
 @Injectable()
 export class LoginService {
-  constructor(private readonly apollo: Apollo) {}
+  constructor(private readonly _apollo: Apollo) {}
   login(l: LoginReq) {
-    return this.apollo.mutate({
+    return this._apollo.mutate({
       mutation: LOGIN,
       variables: {
         login: l,

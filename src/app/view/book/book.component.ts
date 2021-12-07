@@ -17,7 +17,7 @@ export class BookComponent {
   option: state = 'default';
 
   @ViewChild('book')
-  private readonly book!: ElementRef;
+  private readonly _book!: ElementRef;
 
   constructor(readonly router: Router) {}
 

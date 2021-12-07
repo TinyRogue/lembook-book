@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoaderComponenet } from './loader/loader.componenet';
+import { LoaderComponent } from './loader/loader.component';
+import { ToastComponent } from './toast/toast.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [LoaderComponenet],
-  imports: [CommonModule],
+  declarations: [LoaderComponent, ToastComponent],
+  imports: [CommonModule, FontAwesomeModule],
   providers: [],
-  exports: [LoaderComponenet],
+  exports: [LoaderComponent, ToastComponent],
 })
 export class ComponentsModule {}

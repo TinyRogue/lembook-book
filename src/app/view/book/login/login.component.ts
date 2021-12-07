@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LoginService } from './login.service';
 import { finalize, tap } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +13,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup | undefined;
   credentials = { email: '', password: '' };
 
-  constructor(
-    private readonly gqlService: LoginService,
-    private readonly snack: MatSnackBar
-  ) {}
+  constructor(private readonly _gqlService: LoginService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -35,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.credentials = this.form!.getRawValue();
     if (this.form?.valid) {
       this.loadingEmitter.emit(true);
-      this.gqlService
+      this._gqlService
         .login({
           username: this.credentials.email,
           password: this.credentials.password,
