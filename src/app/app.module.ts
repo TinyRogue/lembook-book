@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app.routing.module';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './pkg/components/components.module';
+import { StoreModule } from '@ngrx/store';
+import { toastReducer } from './state/toast/toast.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +18,9 @@ import { ComponentsModule } from './pkg/components/components.module';
     GraphQLModule,
     HttpClientModule,
     ComponentsModule,
+    StoreModule.forRoot({
+      toastFeature: toastReducer,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

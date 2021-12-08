@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { slideInAnimation } from '@animations/slide-in';
+import { ToastService } from '../../pkg/components/toast/toast.service';
 
 type direction = 'forward' | 'backward';
 type state = 'default' | 'login' | 'register';
@@ -19,7 +20,7 @@ export class BookComponent {
   @ViewChild('book')
   private readonly _book!: ElementRef;
 
-  constructor(readonly router: Router) {}
+  constructor(readonly router: Router, private readonly toast: ToastService) {}
 
   blockPageTurn(reason: state) {
     setTimeout(() => (this.pageTurned = 'forward'), 0);
@@ -29,6 +30,7 @@ export class BookComponent {
   async turnThePage(dir: direction) {
     this.pageTurned = dir;
     this.option = 'default';
+    this.toast.makeToast();
   }
 
   setLoader(turnOn: boolean) {
