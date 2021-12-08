@@ -8,6 +8,9 @@ export const initialState: Toast[] = [];
 export const toastReducer = createReducer(
   initialState,
   on(addToast, (state, { toast }) => [...state, toast]),
-  on(removeToast, (state, { toast }) => state),
-  on(hideToast, (state, { toast }) => state)
+  on(removeToast, (state, { toast }) => state.filter((t) => t != toast)),
+  on(hideToast, (state, { toast }) => {
+    toast.hidden = true;
+    return state;
+  })
 );
