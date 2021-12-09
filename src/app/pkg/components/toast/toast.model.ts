@@ -5,5 +5,4 @@ export interface Toast {
   hidden: boolean;
   title: string | undefined;
   text: string | undefined;
-  defaultDuration: number;
 }

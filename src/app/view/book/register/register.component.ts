@@ -1,8 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RegisterService } from './register.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize, tap } from 'rxjs/operators';
 import { namedRegexValidator } from '../../../pkg/validators/named-regex.validator';
+import { ToastService } from '../../../pkg/components/toast/toast.service';
+import { ToastEnum } from '../../../pkg/components/toast/toast.enum';
+import { faSadCry } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -13,8 +16,30 @@ export class RegisterComponent implements OnInit {
   @Output() loadingEmitter = new EventEmitter<boolean>();
   form: FormGroup | undefined;
   credentials = { email: '', password: '', repeatedPassword: '' };
+  readonly faSad = faSadCry;
+  private readonly _successToast = {
+    type: ToastEnum.success,
+    title: 'Sukces!',
+    text: `Pomyślnie stworzono konto ${this.credentials.email}.`,
+    hidden: false,
+  };
+  private readonly _errConnToast = {
+    type: ToastEnum.danger,
+    title: 'Brak odpowiedzi',
+    text: 'Proszę spróbować później',
+    hidden: false,
+  };
+  private readonly _errExistsToast = {
+    type: ToastEnum.danger,
+    title: 'Wystąpił błąd',
+    text: 'Użytkownik już istnieje',
+    hidden: false,
+  };
 
-  constructor(private readonly _gqlService: RegisterService) {}
+  constructor(
+    private readonly _gqlService: RegisterService,
+    private readonly _toast: ToastService
+  ) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -32,7 +57,7 @@ export class RegisterComponent implements OnInit {
           hasSpecialSign: true,
         }),
       ]),
-      repeatPassword: new FormControl(this.credentials.repeatedPassword, [
+      repeatedPassword: new FormControl(this.credentials.repeatedPassword, [
         Validators.required,
       ]),
     });
@@ -40,7 +65,14 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.credentials = this.form!.getRawValue();
-    if (this.form?.valid) {
+    console.log(this.credentials.password, this.credentials.repeatedPassword);
+    console.log(
+      this.credentials.password === this.credentials.repeatedPassword
+    );
+    if (
+      this.form?.valid &&
+      this.credentials.password === this.credentials.repeatedPassword
+    ) {
       this.loadingEmitter.emit(true);
       this._gqlService
         .register({
@@ -50,10 +82,14 @@ export class RegisterComponent implements OnInit {
         .pipe(
           tap({
             next: async (data) => {
-              console.log(data);
+              this._toast.makeToast(this._successToast);
             },
             error: (data) => {
-              console.log(data);
+              if (data.networkError) {
+                this._toast.makeToast(this._errConnToast);
+              } else {
+                this._toast.makeToast(this._errExistsToast);
+              }
             },
           }),
           finalize(() => this.loadingEmitter.emit(false))

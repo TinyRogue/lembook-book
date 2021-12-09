@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LoginService } from './login.service';
 import { finalize, tap } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastService } from '../../../pkg/components/toast/toast.service';
+import { ToastEnum } from '../../../pkg/components/toast/toast.enum';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,10 @@ export class LoginComponent implements OnInit {
   form: FormGroup | undefined;
   credentials = { email: '', password: '' };
 
-  constructor(private readonly _gqlService: LoginService) {}
+  constructor(
+    private readonly _gqlService: LoginService,
+    private readonly _toast: ToastService
+  ) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -38,11 +43,30 @@ export class LoginComponent implements OnInit {
         })
         .pipe(
           tap({
-            next: async (data) => {
-              console.log(data);
+            next: (data) => {
+              this._toast.makeToast({
+                type: ToastEnum.success,
+                title: 'Zalogowano!',
+                text: 'Misja zakończona sukcesem',
+                hidden: false,
+              });
             },
             error: (data) => {
-              console.log(data);
+              if (data.networkError) {
+                this._toast.makeToast({
+                  type: ToastEnum.danger,
+                  title: 'Brak odpowiedzi',
+                  text: 'Proszę spróbować później',
+                  hidden: false,
+                });
+              } else {
+                this._toast.makeToast({
+                  type: ToastEnum.danger,
+                  title: 'Niepoprawne dane',
+                  text: 'Spróbuj jeszcze raz',
+                  hidden: false,
+                });
+              }
             },
           }),
           finalize(() => this.loadingEmitter.emit(false))

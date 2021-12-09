@@ -5,10 +5,7 @@ import {
   faCheckCircle,
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { State } from '../../../state/state';
-import { selectToasts } from '../../../state/toast/toast.selector';
+import { ToastService } from './toast.service';
 
 @Component({
   selector: 'app-pkg-toast',
@@ -16,20 +13,18 @@ import { selectToasts } from '../../../state/toast/toast.selector';
   styleUrls: ['./toast.component.scss'],
 })
 export class ToastComponent implements OnInit {
-  toasts$!: Observable<Toast[]>;
-  justTab = [];
+  toasts: Toast[] = [];
   readonly types = ToastEnum;
   readonly checkIcon = faCheckCircle;
   readonly xIcon = faTimesCircle;
 
-  constructor(private readonly store: Store<State>) {}
+  constructor(private readonly toastService: ToastService) {}
 
   ngOnInit() {
-    this.toasts$ = this.store.select(selectToasts);
+    this.toasts = this.toastService.toasts;
   }
 
-  // delete(toast: Toast) {
-  //   this.toasts[this.toasts.indexOf(toast)].hidden = true;
-  //   setTimeout(() => this.toasts.splice(this.toasts.indexOf(toast), 1), 500);
-  // }
+  delete(toast: Toast) {
+    this.toastService.deleteToast(toast);
+  }
 }
