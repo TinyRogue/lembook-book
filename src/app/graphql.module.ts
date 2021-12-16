@@ -7,8 +7,9 @@ const prodURI = 'https://lembook-serv.herokuapp.com/gql';
 const devURI = 'http://localhost:8080/query';
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
-    link: httpLink.create({ uri: devURI }),
+    link: httpLink.create({ uri: devURI, withCredentials: true }),
     cache: new InMemoryCache(),
+    credentials: 'include',
   };
 }
 
