@@ -5,10 +5,20 @@ import { BookModule } from './view/book/book.module';
 import { AppRoutingModule } from './app.routing.module';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentsModule } from './pkg/components/components.module';
+import { HomeModule } from './view/home/home.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BookModule, AppRoutingModule, GraphQLModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    BookModule,
+    AppRoutingModule,
+    GraphQLModule,
+    HttpClientModule,
+    ComponentsModule,
+    HomeModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

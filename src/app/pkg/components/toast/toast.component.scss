@@ -1,0 +1,77 @@
+@import "src/vars";
+
+:host {
+  position: fixed;
+  top: calc(2 * #{$baseline});
+  right: calc(2 * #{$baseline});
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-height: 100%;
+  overflow: hidden;
+  width: calc(20 * #{$baseline});
+
+  & * {
+    pointer-events: auto;
+  }
+}
+
+.toast-item {
+  height: calc(7 * #{$baseline});
+  width: 100%;
+  border-radius: 20px;
+  color: #eee;
+  opacity: 1;
+  margin-top: $baseline;
+  position: relative;
+  font-size: calc(#{$base-font-size} * 1.5);
+  transition-duration: 500ms;
+  overflow: hidden;
+  cursor: pointer;
+
+  &.hidden {
+    opacity: 0;
+    height: 0;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: calc(#{$baseline});
+}
+
+.title {
+  font-family: $big-serif;
+  font-size: calc(#{$base-font-size} * 1.5);
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: calc(1 * #{$baseline});
+  left: calc(1.5 * #{$baseline});
+}
+
+.text {
+  font-family: $serif;
+  font-size: calc(#{$base-font-size} * 1.1);
+  margin: calc(#{$baseline} * 0.5) calc(#{$baseline} * 5.5) 0
+    calc(#{$baseline} * 1.5);
+}
+
+.danger {
+  background-color: #dd3055;
+
+  fa-icon {
+    color: #861e41;
+  }
+}
+
+.success {
+  background-color: #4f8c7c;
+
+  fa-icon {
+    color: #065763;
+  }
+}

@@ -1,32 +1,4 @@
 @import "./src/vars";
-//TODO: Change fonts
-//@import url('https://fonts.googleapis.com/css?family=Nunito|Cormorant|Nanum+Myeongjo|Oswald&display=swap');
-
-// Colours
-$page-bg-light: #f5f5f5;
-$page-shadow-light: #0000004c;
-$page-gradient-1-light: #e3e3e3ff;
-$page-gradient-2-light: #f7f7f700;
-
-$page-bg-dark: #08090d;
-$page-shadow-dark: #000000cc;
-$page-gradient-1-dark: #0d0f18;
-$page-gradient-2-dark: #0b0b0b00;
-
-// Text
-$book-title: "Oswald", sans-serif;
-$title: "Cormorant", serif;
-$body: "Cormorant", serif;
-
-// Proportions
-$textbook-typical-h: 7;
-$textbook-typical-w: 10;
-
-$book-height: 80vmin;
-$book-width: min(
-  calc(#{$book-height} / #{$textbook-typical-h} * #{$textbook-typical-w}),
-  95vw
-);
 
 * {
   box-sizing: border-box;
@@ -129,7 +101,7 @@ $book-width: min(
       color: $text-dark;
 
       &-book-title {
-        font-family: $book-title;
+        font-family: $big-serif;
         font-size: calc(#{$base-font-size} * 3.25);
         font-weight: bold;
         text-transform: uppercase;
@@ -140,7 +112,7 @@ $book-width: min(
 
       &-author {
         align-self: center;
-        font-family: $title;
+        font-family: $serif;
         font-size: calc(#{$base-font-size} * 1.5);
         font-weight: 100;
         text-transform: uppercase;
@@ -152,7 +124,7 @@ $book-width: min(
       }
 
       &-credits {
-        font-family: $title;
+        font-family: $serif;
         color: $text-dark-smooth;
         font-size: $base-font-size;
         text-transform: uppercase;
@@ -176,7 +148,7 @@ $book-width: min(
         position: absolute;
         width: calc(100% - (#{$baseline} * 2));
         bottom: calc(#{$baseline} * 2);
-        font-family: $title;
+        font-family: $serif;
         font-size: calc(#{$base-font-size} * 0.9);
         text-transform: uppercase;
       }
@@ -184,14 +156,14 @@ $book-width: min(
       &-blockquote-text {
         margin-top: calc(#{$baseline} * 2);
         margin-bottom: calc(#{$baseline} * 2);
-        font-family: $title;
+        font-family: $serif;
         font-size: $base-font-size;
         font-style: italic;
         text-align: justify;
       }
 
       &-blockquote-reference {
-        font-family: $title;
+        font-family: $serif;
         margin-bottom: calc(#{$baseline} * 2);
         font-size: calc(#{$base-font-size} * 0.9);
         margin-top: calc(#{$baseline} * 0.3);
@@ -201,7 +173,7 @@ $book-width: min(
 
       &-text {
         padding-top: calc(#{$baseline} * 2);
-        font-family: $title;
+        font-family: $serif;
         font-size: $base-font-size;
         text-align: justify;
         text-indent: #{$baseline};
@@ -214,7 +186,7 @@ $book-width: min(
       position: absolute;
       bottom: #{$baseline};
       width: calc(100% - (#{$baseline} * 3.5));
-      font-family: $title;
+      font-family: $serif;
       font-size: calc(#{$base-font-size} * 0.8);
       text-align: center;
     }
@@ -229,7 +201,8 @@ $book-width: min(
   align-items: center;
 
   & .lembook-login {
-    color: $text-dark;
+    font-family: $serif;
+    color: $text-dark-smooth;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,7 +259,7 @@ $book-width: min(
   }
 
   & button {
-    font-family: $title;
+    font-family: $serif;
     color: $text-dark-smooth;
     font-size: calc(#{$base-font-size} * 1.2);
     text-transform: uppercase;
@@ -334,4 +307,10 @@ $book-width: min(
       border-color: #33333326;
     }
   }
+}
+
+app-pkg-loader {
+  position: absolute;
+  right: calc(#{$baseline} * 4);
+  top: calc(#{$baseline} * 2);
 }

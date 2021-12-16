@@ -1,15 +1,63 @@
-<label for="email"></label>
-<input #email type="email" id="email" name="email" placeholder="E-mail" />
-<fa-icon [icon]="['fas', 'user']"></fa-icon>
-<label for="password"></label>
-<input
-  #password
-  type="password"
-  id="password"
-  name="password"
-  placeholder="Hasło"
-/>
-<fa-icon [icon]="['fas', 'key']"></fa-icon>
-<button (click)="login(email.value, password.value)" type="submit">
-  Zaloguj się
-</button>
+<form [formGroup]="form!" (keydown.enter)="login()">
+  <fieldset>
+    <input autocomplete="off" name="hidden" type="text" style="display: none" />
+    <div class="input-group">
+      <div class="field">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          autocomplete="email"
+          (focusout)="login()"
+          required
+          class="form-control"
+        />
+        <label>E-mail</label>
+        <!--        <ng-container-->
+        <!--          *ngIf="email!.invalid && (email!.dirty || email!.touched)"-->
+        <!--        >-->
+        <!--          <div *ngIf="email!.errors!.required" class="warning">-->
+        <!--            Proszę uzupełnić e-mail.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="email!.errors!.email" class="warning">-->
+        <!--            Niepoprawny adres e-mail.-->
+        <!--          </div>-->
+        <!--        </ng-container>-->
+      </div>
+
+      <div class="field">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          autocomplete="password"
+          (focusout)="login()"
+          required
+          class="form-control"
+        />
+        <label>Hasło</label>
+        <!--        <ng-container-->
+        <!--          *ngIf="password!.invalid && (password!.dirty || password!.touched)"-->
+        <!--        >-->
+        <!--          <div *ngIf="password!.errors!.required" class="warning">-->
+        <!--            Proszę uzupełnić hasło.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="password!.errors!.hasNumber" class="warning">-->
+        <!--            Hasło musi zawierać przynajmniej jedną cyfrę.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="password!.errors!.hasCapitalLetter" class="warning">-->
+        <!--            Hasło musi zawierać przynajmniej jedną wielką literę.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="password!.errors!.hasMinorLetter" class="warning">-->
+        <!--            Hasło musi zawierać przynajmniej jedną małą literę.-->
+        <!--          </div>-->
+        <!--          <div *ngIf="password!.errors!.hasSpecialSign" class="warning">-->
+        <!--            Hasło musi zawierać przynajmniej jeden znak specjalny.-->
+        <!--          </div>-->
+        <!--        </ng-container>-->
+      </div>
+    </div>
+  </fieldset>
+</form>

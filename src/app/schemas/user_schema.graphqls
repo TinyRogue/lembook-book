@@ -1,11 +1,14 @@
+# This could be generified somehow
 type Depiction {
   res: String
-  error: String
 }
 
 type User {
+  UID: String!
   username: String!
-  identifier: String!
+  Password: String!
+  Token: String
+  TokenSelector: String
 }
 
 input Registration {
@@ -24,5 +27,5 @@ type Query {
 
 type Mutation {
   register(input: Registration!): Depiction!
-  login(input: Login!): String!
+  login(input: Login!): Depiction!
 }

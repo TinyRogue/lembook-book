@@ -1,0 +1,17 @@
+<div
+  *ngFor="let toast of toasts"
+  (click)="delete(toast)"
+  [ngClass]="{
+    danger: toast.type === types.danger,
+    success: toast.type === types.success,
+    hidden: toast.hidden
+  }"
+  class="toast-item"
+>
+  <fa-icon
+    class="icon fa-2x"
+    [icon]="types.success === toast.type ? checkIcon : xIcon"
+  ></fa-icon>
+  <h6 class="title">{{ toast.title }}</h6>
+  <p class="text">{{ toast.text }}</p>
+</div>
