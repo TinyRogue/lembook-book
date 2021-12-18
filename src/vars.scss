@@ -23,6 +23,7 @@ $page-gradient-2-dark: #0b0b0b00;
 // Text
 $big-serif: "Vollkorn", sans-serif;
 $serif: "Cormorant", serif;
+$lato: "Lato", sans-serif;
 
 // Proportions
 $textbook-typical-h: 7;
@@ -48,3 +49,6 @@ $baseline: clamp(#{$__min}, #{$__preferred}, #{$__max});
 }
 
 $base-font-size: calc(#{$baseline} * 1.2);
+
+$white: #edeff3;
+$dark: #2e3440;
