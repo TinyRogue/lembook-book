@@ -1,12 +1,38 @@
 <header>
   <nav>
-    <a>Lembook</a>
+    <a [routerLink]="['discover']" class="logo-title">Lembook</a>
     <div class="inner-nav">
-      <a>Odkrywaj</a>
-      <a>Moja półka</a>
+      <div [routerLink]="['discover']" class="nav-item">
+        <span class="dot" routerLinkActive="dot-visible"></span>
+        <a class="nav-link">Odkrywaj</a>
+        <img
+          src="assets/icons/telescope.svg"
+          alt="Search icon"
+          class="nav-icon"
+        />
+      </div>
+      <div [routerLink]="['my-shelf']" class="nav-item">
+        <span class="dot" routerLinkActive="dot-visible"></span>
+        <a class="nav-link">Moja półka</a>
+        <img
+          src="../../../assets/icons/books-dark.svg"
+          alt="My collection icon"
+          class="nav-icon"
+        />
+      </div>
     </div>
-    <a>
-      <fa-icon [icon]="turnOnOff" class="fa-2x"></fa-icon>
-    </a>
+    <button
+      mat-icon-button
+      [color]="'warn'"
+      aria-label="Log out button"
+      class="log-out-container"
+    >
+      <img
+        src="assets/icons/power-red.svg"
+        alt="Log out power button"
+        class="log-out-button"
+      />
+    </button>
   </nav>
 </header>
+<router-outlet></router-outlet>

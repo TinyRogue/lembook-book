@@ -101,7 +101,7 @@
       color: $text-dark;
 
       &-book-title {
-        font-family: $big-serif;
+        font-family: $cormorant;
         font-size: calc(#{$base-font-size} * 3.25);
         font-weight: bold;
         text-transform: uppercase;
@@ -112,7 +112,7 @@
 
       &-author {
         align-self: center;
-        font-family: $serif;
+        font-family: $cormorant;
         font-size: calc(#{$base-font-size} * 1.5);
         font-weight: 100;
         text-transform: uppercase;
@@ -124,7 +124,7 @@
       }
 
       &-credits {
-        font-family: $serif;
+        font-family: $cormorant;
         color: $text-dark-smooth;
         font-size: $base-font-size;
         text-transform: uppercase;
@@ -148,7 +148,7 @@
         position: absolute;
         width: calc(100% - (#{$baseline} * 2));
         bottom: calc(#{$baseline} * 2);
-        font-family: $serif;
+        font-family: $cormorant;
         font-size: calc(#{$base-font-size} * 0.9);
         text-transform: uppercase;
       }
@@ -156,14 +156,14 @@
       &-blockquote-text {
         margin-top: calc(#{$baseline} * 2);
         margin-bottom: calc(#{$baseline} * 2);
-        font-family: $serif;
+        font-family: $cormorant;
         font-size: $base-font-size;
         font-style: italic;
         text-align: justify;
       }
 
       &-blockquote-reference {
-        font-family: $serif;
+        font-family: $cormorant;
         margin-bottom: calc(#{$baseline} * 2);
         font-size: calc(#{$base-font-size} * 0.9);
         margin-top: calc(#{$baseline} * 0.3);
@@ -173,7 +173,7 @@
 
       &-text {
         padding-top: calc(#{$baseline} * 2);
-        font-family: $serif;
+        font-family: $cormorant;
         font-size: $base-font-size;
         text-align: justify;
         text-indent: #{$baseline};
@@ -186,7 +186,7 @@
       position: absolute;
       bottom: #{$baseline};
       width: calc(100% - (#{$baseline} * 3.5));
-      font-family: $serif;
+      font-family: $cormorant;
       font-size: calc(#{$base-font-size} * 0.8);
       text-align: center;
     }
@@ -201,7 +201,7 @@
   align-items: center;
 
   & .lembook-login {
-    font-family: $serif;
+    font-family: $cormorant;
     color: $text-dark-smooth;
     display: flex;
     flex-direction: column;
@@ -259,7 +259,7 @@
   }
 
   & button {
-    font-family: $serif;
+    font-family: $cormorant;
     color: $text-dark-smooth;
     font-size: calc(#{$base-font-size} * 1.2);
     text-transform: uppercase;

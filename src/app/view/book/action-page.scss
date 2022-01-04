@@ -36,13 +36,14 @@ label {
   top: 50%;
   transform: translateY(-50%);
   transition: 0.2s ease all;
+  font-family: $cormorant;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
 }
 
 input {
   box-sizing: border-box;
-  font-family: $big-serif;
+  font-family: $cormorant;
   font-size: calc(#{$base-font-size} * 1.3);
   padding: 0.25em calc(#{$baseline} * 1.5);
   width: 100%;
@@ -67,6 +68,7 @@ input {
       transform: translateY(calc(-3 * #{$base-font-size}));
       font-size: calc(#{$base-font-size} * 1);
       color: $arctic-blue;
+      font-family: $cormorant;
     }
   }
 

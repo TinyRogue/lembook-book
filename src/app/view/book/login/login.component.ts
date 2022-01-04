@@ -4,6 +4,7 @@ import { finalize, tap } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from '../../../pkg/components/toast/toast.service';
 import { ToastEnum } from '../../../pkg/components/toast/toast.enum';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private readonly _gqlService: LoginService,
-    private readonly _toast: ToastService
+    private readonly _toast: ToastService,
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -43,12 +46,15 @@ export class LoginComponent implements OnInit {
         })
         .pipe(
           tap({
-            next: (data) => {
+            next: async (data) => {
               this._toast.makeToast({
                 type: ToastEnum.success,
                 title: 'Zalogowano!',
                 text: 'Misja zakończona sukcesem',
                 hidden: false,
+              });
+              await this._router.navigate(['home'], {
+                relativeTo: this._route,
               });
             },
             error: (data) => {
