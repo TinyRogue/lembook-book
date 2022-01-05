@@ -14,13 +14,13 @@ export class CardContainerComponent {
     {
       author: 'autor',
       title: 'tytuł',
-      coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
+      coverURL: `https://picsum.photos/1000?param=${Math.random()}`,
       genre: 'gatunek',
     },
     {
       author: 'autor',
       title: 'tytuł',
-      coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
+      coverURL: `https://picsum.photos/500?param=${Math.random()}`,
       genre: 'gatunek',
     },
     {
@@ -58,4 +58,5 @@ export class CardContainerComponent {
   readonly heartIcon = faHeart;
   readonly bookIcon = faBook;
   readonly bombIcon = faBomb;
+  readonly loadingCards = Array(20).fill(0);
 }

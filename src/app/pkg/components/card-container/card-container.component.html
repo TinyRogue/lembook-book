@@ -1,26 +1,53 @@
 <section>
-  <div class="section-name">{{ sectionName }}</div>
+  <div *ngIf="cards.length !== 0" class="section-name">{{ sectionName }}</div>
+  <div *ngIf="cards.length === 0" class="section-name-empty">Ładowanie...</div>
   <div class="card-container">
-    <article class="card" *ngFor="let card of cards">
-      <div class="image-container">
-        <img [src]="card.coverURL" alt="book's photo" />
-      </div>
-      <header class="card-header">
-        <p class="author">{{ card.author }}</p>
-        <p class="title">{{ card.title }}</p>
-        <p class="genre">{{ card.genre }}</p>
-        <div class="actions">
-          <button mat-icon-button class="read">
-            <fa-icon class="icon" [icon]="bookIcon"></fa-icon>
-          </button>
-          <button mat-icon-button class="like">
-            <fa-icon class="icon" [icon]="heartIcon"></fa-icon>
-          </button>
-          <button mat-icon-button class="dislike">
-            <fa-icon class="icon" [icon]="bombIcon"></fa-icon>
-          </button>
+    <ng-container *ngIf="cards.length !== 0">
+      <article class="card" *ngFor="let card of cards">
+        <div class="image-container">
+          <img [src]="card.coverURL" alt="book's photo" />
         </div>
-      </header>
-    </article>
+        <header class="card-header">
+          <p class="author">{{ card.author }}</p>
+          <p class="title">{{ card.title }}</p>
+          <p class="genre">{{ card.genre }}</p>
+          <div class="actions">
+            <button mat-icon-button class="read">
+              <fa-icon class="icon" [icon]="bookIcon"></fa-icon>
+            </button>
+            <button mat-icon-button class="like">
+              <fa-icon class="icon" [icon]="heartIcon"></fa-icon>
+            </button>
+            <button mat-icon-button class="dislike">
+              <fa-icon class="icon" [icon]="bombIcon"></fa-icon>
+            </button>
+          </div>
+        </header>
+      </article>
+    </ng-container>
+
+    <ng-container *ngIf="cards.length === 0">
+      <article class="card card-empty" *ngFor="let card of loadingCards">
+        <div class="image-container-empty">
+          <div class="empty-img"></div>
+        </div>
+        <header class="card-header">
+          <p class="author author-empty">Lembook</p>
+          <p class="title title-empty">Lembook</p>
+          <p class="genre genre-empty">Lembook</p>
+          <div class="actions">
+            <button disabled mat-icon-button class="read">
+              <fa-icon class="icon" [icon]="bookIcon"></fa-icon>
+            </button>
+            <button disabled mat-icon-button class="like">
+              <fa-icon class="icon" [icon]="heartIcon"></fa-icon>
+            </button>
+            <button disabled mat-icon-button class="dislike">
+              <fa-icon class="icon" [icon]="bombIcon"></fa-icon>
+            </button>
+          </div>
+        </header>
+      </article>
+    </ng-container>
   </div>
 </section>
