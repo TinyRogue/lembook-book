@@ -1,0 +1,26 @@
+<section>
+  <div class="section-name">{{ sectionName }}</div>
+  <div class="card-container">
+    <article class="card" *ngFor="let card of cards">
+      <div class="image-container">
+        <img [src]="card.coverURL" alt="book's photo" />
+      </div>
+      <header class="card-header">
+        <p class="author">{{ card.author }}</p>
+        <p class="title">{{ card.title }}</p>
+        <p class="genre">{{ card.genre }}</p>
+        <div class="actions">
+          <button mat-icon-button class="read">
+            <fa-icon class="icon" [icon]="bookIcon"></fa-icon>
+          </button>
+          <button mat-icon-button class="like">
+            <fa-icon class="icon" [icon]="heartIcon"></fa-icon>
+          </button>
+          <button mat-icon-button class="dislike">
+            <fa-icon class="icon" [icon]="bombIcon"></fa-icon>
+          </button>
+        </div>
+      </header>
+    </article>
+  </div>
+</section>

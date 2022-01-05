@@ -22,6 +22,7 @@ $page-gradient-2-dark: #0b0b0b00;
 
 // Text
 $cormorant: "Cormorant", serif;
+$quicksand: "Quicksand", sans-serif;
 $lato: "Lato", sans-serif;
 $babe: "Oooh Baby", sans-serif;
 
@@ -39,8 +40,18 @@ $book-width: min(
 $bg-dark: #181d27;
 $text-dark: #c9cebd;
 $text-dark-smooth: #c9cebd;
-
 $arctic-blue: #87c0d0;
+// Additional
+$white: #edeff3;
+$dark: #2e3440;
+$red: #bf616a;
+$intense-red: #dd3055;
+$blue: #5e81ac;
+$dark-blue: #4c566a;
+$pink: #955074;
+$orange: #edb295;
+$dark-orange: #e27b41;
+$blue-green: #6bddd4;
 
 /* Text */
 $baseline: clamp(#{$__min}, #{$__preferred}, #{$__max});
@@ -49,15 +60,3 @@ $baseline: clamp(#{$__min}, #{$__preferred}, #{$__max});
 }
 
 $base-font-size: calc(#{$baseline} * 1.2);
-
-$white: #edeff3;
-$dark: #2e3440;
-$red: #bf616a;
-$intense-red: #dd3055;
-$blue: #5e81ac;
-$dark-blue: #4c566a;
-
-$pink: #955074;
-$orange: #edb295;
-$dark-orange: #e27b41;
-$blue-green: #6bddd4;

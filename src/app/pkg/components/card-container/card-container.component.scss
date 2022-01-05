@@ -1,0 +1,154 @@
+@import "src/vars";
+
+.card-container {
+  display: flex;
+  padding: 1.5rem 3rem;
+  overflow-x: scroll;
+  margin: 0 1.5rem;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $dark-blue;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      darken($dark-blue, 15%),
+      darken($dark-blue, 20%)
+    );
+  }
+}
+
+.section-name {
+  margin: 2rem calc(#{$baseline} * 2) 0 calc(#{$baseline} * 2);
+  color: $text-dark-smooth;
+  font-weight: bold;
+  font-size: calc(#{$base-font-size} * 2);
+  width: auto;
+  font-family: $cormorant;
+  padding: 0.75rem;
+}
+
+.card {
+  height: 450px;
+  aspect-ratio: 1 / 1.4;
+  border-radius: 16px;
+  background: #17141d;
+  box-shadow: -1rem 0 1.5rem #000;
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s;
+  margin: 0;
+  scroll-snap-align: start;
+  clear: both;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:focus-within ~ &,
+  &:hover {
+    transform: translateY(-1rem);
+
+    & ~ .card {
+      transform: translateX(calc(#{$baseline} * 12.5));
+    }
+  }
+
+  &:hover {
+    .card-header .title {
+      color: $dark-orange;
+    }
+  }
+
+  &:not(:first-child) {
+    margin-left: calc(#{$baseline} * -12.5);
+  }
+
+  .image-container {
+    height: 65%;
+    width: 100%;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .card-header {
+    color: $text-dark;
+    height: 100%;
+
+    p {
+      margin: 0;
+      padding: 0 calc(#{$baseline} * 2) 0;
+    }
+
+    .author {
+      font-weight: 200;
+      padding-top: $baseline;
+      font-size: calc(#{$base-font-size} * 1.25);
+    }
+
+    .title {
+      font-weight: bold;
+      padding-top: calc(#{$baseline} * 0.5);
+      font-size: calc(#{$base-font-size} * 1.25);
+    }
+
+    .genre {
+      position: absolute;
+      bottom: 0;
+      padding: calc(#{$baseline} * 0.5) calc(#{$baseline} * 1.25);
+      margin: $baseline calc(#{$baseline} * 1.5);
+      border-radius: 0.75rem;
+      border: 2px solid $text-dark;
+      font-size: calc(#{$base-font-size} * 0.85);
+      width: min-content;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: calc(#{$baseline} * 2);
+      top: 65%;
+
+      button {
+        background-color: transparent;
+        padding: calc(#{$baseline} * 1.25);
+        position: relative;
+        border-radius: 4rem;
+        border: 1px solid $text-dark-smooth;
+        cursor: pointer;
+        outline: inherit;
+        color: $white;
+        margin: calc(#{$baseline} * 0.75) 0 0 0;
+
+        fa-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .like {
+        color: $intense-red;
+        border-color: $intense-red;
+      }
+
+      .dislike {
+        color: $dark-blue;
+        border-color: $dark-blue;
+      }
+    }
+  }
+}

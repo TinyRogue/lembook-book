@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MyShelfComponent } from './my-shelf/my-shelf.component';
 import { DiscoverComponent } from './discover/discover.component';
+import { ComponentsModule } from '../../pkg/components/components.module';
 
 @NgModule({
   declarations: [HomeComponent, MyShelfComponent, DiscoverComponent],
@@ -22,6 +23,7 @@ import { DiscoverComponent } from './discover/discover.component';
     MatRippleModule,
     MatIconModule,
     MatButtonModule,
+    ComponentsModule,
   ],
   providers: [],
   exports: [HomeComponent],
