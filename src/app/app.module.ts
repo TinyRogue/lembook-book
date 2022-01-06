@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './pkg/components/components.module';
 import { HomeModule } from './view/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ComponentsModule,
     HomeModule,
     BrowserAnimationsModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent],

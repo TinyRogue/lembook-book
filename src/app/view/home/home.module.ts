@@ -12,6 +12,8 @@ import { MyShelfComponent } from './my-shelf/my-shelf.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ComponentsModule } from '../../pkg/components/components.module';
 import { DiscoverService } from './discover/discover.service';
+import { StoreModule } from '@ngrx/store';
+import { discoverBooksReducer } from './discover/state-manager/users-books.reducer';
 
 @NgModule({
   declarations: [HomeComponent, MyShelfComponent, DiscoverComponent],
@@ -25,6 +27,9 @@ import { DiscoverService } from './discover/discover.service';
     MatIconModule,
     MatButtonModule,
     ComponentsModule,
+    StoreModule.forFeature('discoveredBooks', {
+      discoveredBooks: discoverBooksReducer,
+    }),
   ],
   providers: [DiscoverService],
   exports: [HomeComponent],

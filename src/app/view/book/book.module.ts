@@ -13,6 +13,8 @@ import { LoginService } from './login/login.service';
 import { RegisterService } from './register/register.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../../pkg/components/components.module';
+import { StoreModule } from '@ngrx/store';
+import { discoverBooksReducer } from '../home/discover/state-manager/users-books.reducer';
 
 @NgModule({
   declarations: [BookComponent, LoginComponent, RegisterComponent],
@@ -22,6 +24,9 @@ import { ComponentsModule } from '../../pkg/components/components.module';
     FontAwesomeModule,
     ReactiveFormsModule,
     ComponentsModule,
+    StoreModule.forFeature('loginFeature', {
+      loginMetadata: discoverBooksReducer,
+    }),
   ],
   providers: [LoginService, RegisterService],
   exports: [BookComponent],

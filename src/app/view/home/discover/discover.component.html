@@ -1,2 +1,7 @@
 <app-card-container [sectionName]="category" [cards]="cards">
 </app-card-container>
+
+<ng-container *ngFor="let slice of (discoveredBooks$ | async)!">
+  <app-card-container [sectionName]="slice.genre" [books]="slice.books">
+  </app-card-container>
+</ng-container>

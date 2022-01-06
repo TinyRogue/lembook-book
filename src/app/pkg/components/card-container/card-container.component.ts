@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CardModel } from './card.model';
 import { faBomb, faBook } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { Book } from '@models/user-books-res.json';
 
 @Component({
   selector: 'app-card-container',
@@ -9,7 +10,9 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
   styleUrls: ['./card-container.component.scss'],
 })
 export class CardContainerComponent {
-  @Input() sectionName = 'To może być wszystko';
+  @Input() sectionName: string | undefined = 'To może być wszystko';
+  @Input() books: Book[] | undefined = [];
+
   @Input() cards: CardModel[] = [
     {
       author: 'autor',
