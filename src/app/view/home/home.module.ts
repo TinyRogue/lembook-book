@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MyShelfComponent } from './my-shelf/my-shelf.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { ComponentsModule } from '../../pkg/components/components.module';
+import { DiscoverService } from './discover/discover.service';
 
 @NgModule({
   declarations: [HomeComponent, MyShelfComponent, DiscoverComponent],
@@ -25,7 +26,7 @@ import { ComponentsModule } from '../../pkg/components/components.module';
     MatButtonModule,
     ComponentsModule,
   ],
-  providers: [],
+  providers: [DiscoverService],
   exports: [HomeComponent],
 })
 export class HomeModule {}

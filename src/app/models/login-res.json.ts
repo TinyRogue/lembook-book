@@ -1,4 +1,3 @@
 export interface LoginRes {
-  token: string;
-  tokenSelector: string;
+  userUID: string;
 }
