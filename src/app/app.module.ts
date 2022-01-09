@@ -9,7 +9,7 @@ import { ComponentsModule } from './pkg/components/components.module';
 import { HomeModule } from './view/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import { loginReducer } from './view/book/login/store/login.reducer';
+import { authReducer } from './view/book/login/store/auth.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +22,7 @@ import { loginReducer } from './view/book/login/store/login.reducer';
     ComponentsModule,
     HomeModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ loginMetadata: loginReducer }),
+    StoreModule.forRoot({ auth: authReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],
