@@ -9,7 +9,7 @@ import { ComponentsModule } from './pkg/components/components.module';
 import { HomeModule } from './view/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from './view/book/login/store/auth.reducer';
+import * as fromRoot from './store/app.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +22,7 @@ import { authReducer } from './view/book/login/store/auth.reducer';
     ComponentsModule,
     HomeModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ auth: authReducer }),
+    StoreModule.forRoot(fromRoot.appReducer),
   ],
   providers: [],
   bootstrap: [AppComponent],

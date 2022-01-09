@@ -1,12 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { addUserUID } from './login.actions';
+import { addUserUID } from './auth.actions';
 
 export interface State {
   userUID: string;
-}
-
-export interface AppState {
-  auth: State;
 }
 
 const initialState: State = {

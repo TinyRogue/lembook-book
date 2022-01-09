@@ -5,6 +5,8 @@
     "paths": {
       "@animations/*": ["./src/app/pkg/animations/*"],
       "@models/*": ["./src/app/models/*"],
+      "@store/*": ["./src/app/store/*"],
+      "@pkg/*": ["./src/app/pkg/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
