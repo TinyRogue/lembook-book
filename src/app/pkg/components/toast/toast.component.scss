@@ -2,8 +2,8 @@
 
 :host {
   position: fixed;
-  top: calc(2 * #{$baseline});
-  right: calc(2 * #{$baseline});
+  top: 6em;
+  right: 3em;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@
 .text {
   font-family: $cormorant;
   font-size: calc(#{$base-font-size} * 1.1);
-  margin: calc(#{$baseline} * 0.5) calc(#{$baseline} * 5.5) 0
+  margin: calc(#{$baseline} * 0.4) calc(#{$baseline} * 5.5) 0
     calc(#{$baseline} * 1.5);
 }
 
