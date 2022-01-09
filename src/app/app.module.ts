@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './pkg/components/components.module';
 import { HomeModule } from './view/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
+import { loginReducer } from './view/book/login/store/login.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ComponentsModule,
     HomeModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot({ loginMetadata: loginReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],
