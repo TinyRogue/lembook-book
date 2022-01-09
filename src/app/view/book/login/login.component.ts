@@ -5,8 +5,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from '../../../pkg/components/toast/toast.service';
 import { ToastEnum } from '../../../pkg/components/toast/toast.enum';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { saveUserMetadata } from './state-manager/login.action';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +20,7 @@ export class LoginComponent implements OnInit {
     private readonly _gqlService: LoginService,
     private readonly _toast: ToastService,
     private readonly _router: Router,
-    private readonly _route: ActivatedRoute,
-    private readonly _store: Store<{ loginMetadata: string }>
+    private readonly _route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -50,9 +47,6 @@ export class LoginComponent implements OnInit {
         .pipe(
           tap({
             next: async (data) => {
-              this._store.dispatch(
-                saveUserMetadata({ uid: data.data!.login.res })
-              );
               this._toast.makeToast({
                 type: ToastEnum.success,
                 title: 'Zalogowano!',

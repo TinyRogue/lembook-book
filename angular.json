@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "book"
+  "defaultProject": "book",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
