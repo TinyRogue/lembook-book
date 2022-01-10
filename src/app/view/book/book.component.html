@@ -7,7 +7,7 @@
       />
     </div>
     <div class="book-page fourth">
-      <app-pkg-loader *ngIf="loading"></app-pkg-loader>
+      <app-pkg-loader *ngIf="loading$ | async"></app-pkg-loader>
       <div class="page-content">
         <h1 class="page-content-book-title">Rozdział 1</h1>
         <span *ngIf="option === 'default'" class="page-content-text">
@@ -35,14 +35,8 @@
         >
           - Oscar Wilde
         </blockquote>
-        <app-login
-          *ngIf="option === 'login'"
-          (loadingEmitter)="setLoader($event)"
-        ></app-login>
-        <app-register
-          *ngIf="option === 'register'"
-          (loadingEmitter)="setLoader($event)"
-        ></app-register>
+        <app-login *ngIf="option === 'login'"></app-login>
+        <app-register *ngIf="option === 'register'"></app-register>
       </div>
       <div class="page-number">4</div>
     </div>
