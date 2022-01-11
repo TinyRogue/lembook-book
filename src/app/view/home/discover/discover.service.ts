@@ -27,7 +27,7 @@ export class DiscoverService {
   constructor(private readonly _apollo: Apollo) {}
 
   getGenresWithBooks(userID: UserIDReq) {
-    return this._apollo.query<UserBooksRes>({
+    return this._apollo.query<{ books: UserBooksRes }>({
       query: books,
       variables: {
         userID,

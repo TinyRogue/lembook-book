@@ -35,7 +35,17 @@ export class DiscoverComponent implements OnInit {
           hidden: false,
           text: 'Błąd pobierania niezwykłych książek!',
         });
+      } else {
+        this._toastService.makeToast({
+          type: ToastEnum.success,
+          title: 'Wczytano!',
+          hidden: false,
+          text: '',
+        });
       }
+    });
+    this.discoveredBooks$.subscribe((b) => {
+      console.log(b);
     });
   }
 

@@ -22,7 +22,9 @@ export class DiscoverEffects {
           })
           .pipe(
             map((res) => {
-              return getCategorizedBooksSuccess({ slices: res.data.slices });
+              return getCategorizedBooksSuccess({
+                slices: res.data.books.slices,
+              });
             }),
             retry(3)
             // catchError((error) => of(getCategorizedBooksFailed({ error })))
