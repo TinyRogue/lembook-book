@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { slideInAnimation } from '@animations/slide-in';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '@store/app.reducer';
+import { Router } from '@angular/router';
 
 type direction = 'forward' | 'backward';
 type state = 'default' | 'login' | 'register';
@@ -13,7 +14,7 @@ type state = 'default' | 'login' | 'register';
   styleUrls: ['book.component.scss'],
   animations: [slideInAnimation],
 })
-export class BookComponent implements OnInit {
+export class BookComponent {
   pageTurned: direction = 'backward';
   loading$: Observable<boolean>;
   option: state = 'default';
@@ -21,12 +22,11 @@ export class BookComponent implements OnInit {
   @ViewChild('book')
   private readonly _book!: ElementRef;
 
-  constructor(private readonly _store: Store<AppState>) {
+  constructor(
+    private readonly _store: Store<AppState>,
+    private readonly _router: Router
+  ) {
     this.loading$ = this._store.select((state) => state.book.loading);
-  }
-
-  ngOnInit() {
-    //TODO: send to login with JWT and reroute if successful
   }
 
   blockPageTurn(reason: state) {

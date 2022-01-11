@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { CardModel } from './card.model';
 import { faBomb, faBook } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { Book } from '@models/user-books-res.json';
@@ -10,53 +9,53 @@ import { Book } from '@models/user-books-res.json';
   styleUrls: ['./card-container.component.scss'],
 })
 export class CardContainerComponent {
-  @Input() sectionName: string | undefined = 'To może być wszystko';
-  @Input() books: Book[] | undefined = [];
+  @Input() sectionName: string = 'To może być wszystko';
+  @Input() books: Book[] = [];
 
-  @Input() cards: CardModel[] = [
-    {
-      author: 'autor',
-      title: 'tytuł',
-      coverURL: `https://picsum.photos/1000?param=${Math.random()}`,
-      genre: 'gatunek',
-    },
-    {
-      author: 'autor',
-      title: 'tytuł',
-      coverURL: `https://picsum.photos/500?param=${Math.random()}`,
-      genre: 'gatunek',
-    },
-    {
-      author: 'autor',
-      title: 'tytuł',
-      coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-      genre: 'gatunek',
-    },
-    {
-      author: 'autor',
-      title: 'tytuł',
-      coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-      genre: 'gatunek',
-    },
-    {
-      author: 'autor',
-      title: 'tytuł',
-      coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-      genre: 'gatunek',
-    },
-    {
-      author: 'autor',
-      title: 'tytuł',
-      coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-      genre: 'gatunek',
-    },
-    {
-      author: 'autor',
-      title: 'tytuł',
-      coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-      genre: 'gatunek',
-    },
-  ];
+  // @Input() cards: CardModel[] = [
+  //   {
+  //     author: 'autor',
+  //     title: 'tytuł',
+  //     coverURL: `https://picsum.photos/1000?param=${Math.random()}`,
+  //     genre: 'gatunek',
+  //   },
+  //   {
+  //     author: 'autor',
+  //     title: 'tytuł',
+  //     coverURL: `https://picsum.photos/500?param=${Math.random()}`,
+  //     genre: 'gatunek',
+  //   },
+  //   {
+  //     author: 'autor',
+  //     title: 'tytuł',
+  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
+  //     genre: 'gatunek',
+  //   },
+  //   {
+  //     author: 'autor',
+  //     title: 'tytuł',
+  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
+  //     genre: 'gatunek',
+  //   },
+  //   {
+  //     author: 'autor',
+  //     title: 'tytuł',
+  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
+  //     genre: 'gatunek',
+  //   },
+  //   {
+  //     author: 'autor',
+  //     title: 'tytuł',
+  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
+  //     genre: 'gatunek',
+  //   },
+  //   {
+  //     author: 'autor',
+  //     title: 'tytuł',
+  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
+  //     genre: 'gatunek',
+  //   },
+  // ];
 
   readonly heartIcon = faHeart;
   readonly bookIcon = faBook;

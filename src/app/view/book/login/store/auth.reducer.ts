@@ -20,7 +20,7 @@ export const authReducer = createReducer(
   on(loginUser, (state, { username, expirationDate, userUID }) => ({
     ...state,
     username,
-    expirationDate,
+    expirationDate: expirationDate ?? state.expirationDate,
     userUID,
     authError: null,
   })),

@@ -10,6 +10,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '@store/app.reducer';
+import { HomeService } from '../../../home/home.service';
 
 @Injectable()
 export class AuthEffects {
@@ -37,6 +38,25 @@ export class AuthEffects {
     )
   );
 
+  loginWithJWT$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.LOGIN_WITH_JWT_KEY),
+      switchMap(() => {
+        return this._homeService.loginWithJWT().pipe(
+          map((resData) =>
+            AuthActions.loginUser({
+              userUID: resData.data!.loginWithJWT.UID,
+              username: resData.data!.loginWithJWT.Username,
+            })
+          ),
+          catchError((authError) => {
+            return of(AuthActions.loginFail({ authError }));
+          })
+        );
+      })
+    )
+  );
+
   loginSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
@@ -54,6 +74,7 @@ export class AuthEffects {
     private readonly _loginService: LoginService,
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
-    private readonly _store: Store<AppState>
+    private readonly _store: Store<AppState>,
+    private readonly _homeService: HomeService
   ) {}
 }

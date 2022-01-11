@@ -22,9 +22,14 @@ type Depiction {
   res: String
 }
 
+type UserMeta {
+  UID: String!
+  Username: String!
+}
+
 type User {
   UID: String!
-  username: String!
+  Username: String!
   Password: String!
   Token: [String]
 }
@@ -56,4 +61,5 @@ type Query {
 type Mutation {
   register(input: Registration!): Depiction!
   login(input: Login!): Depiction!
+  loginWithJWT: UserMeta!
 }

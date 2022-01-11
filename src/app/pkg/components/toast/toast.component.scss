@@ -56,8 +56,7 @@
 .text {
   font-family: $cormorant;
   font-size: calc(#{$base-font-size} * 1.1);
-  margin: calc(#{$baseline} * 0.4) calc(#{$baseline} * 5.5) 0
-    calc(#{$baseline} * 1.5);
+  margin: 1em calc(#{$baseline} * 5.5) 0 calc(#{$baseline} * 1.5);
 }
 
 .danger {

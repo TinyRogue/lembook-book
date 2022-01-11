@@ -1,28 +1,45 @@
-import { Component } from '@angular/core';
-import { CardModel } from '@pkg/components/card-container/card.model';
+import { Component, OnInit } from '@angular/core';
 import { DiscoverService } from './discover.service';
 import { ToastService } from '@pkg/components/toast/toast.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '@store/app.reducer';
+import { getCategorizedBooks } from './store/discover.actions';
+import { CategorizedBooks } from '@models/user-books-res.json';
+import { ToastEnum } from '@pkg/components/toast/toast.enum';
 
 @Component({
   selector: 'app-discover',
   templateUrl: 'discover.component.html',
   styleUrls: ['discover.component.scss'],
 })
-export class DiscoverComponent {
-  // discoveredBooks$: Observable<CategorizedBooks[]>;
-  cards: CardModel[] = [];
+export class DiscoverComponent implements OnInit {
+  discoveredBooks$: Observable<CategorizedBooks[] | null>;
+  errorWatcher$: Observable<any>;
   category: string = '';
-  userUID$: Observable<fromRoot.AppState>;
 
   constructor(
     private readonly _discoverService: DiscoverService,
     private readonly _toastService: ToastService,
     private readonly _store: Store<fromRoot.AppState>
   ) {
-    this.userUID$ = this._store.select((state) => state);
-    this.userUID$.subscribe((test) => {});
+    this.discoveredBooks$ = this._store.select(
+      (state) => state.discover.categorizedBooks
+    );
+    this.errorWatcher$ = this._store.select((state) => state.discover.error);
+    this.errorWatcher$.subscribe((error) => {
+      if (error) {
+        this._toastService.makeToast({
+          type: ToastEnum.danger,
+          title: 'Carramba!',
+          hidden: false,
+          text: 'Błąd pobierania niezwykłych książek!',
+        });
+      }
+    });
+  }
+
+  ngOnInit() {
+    this._store.dispatch(getCategorizedBooks());
   }
 }

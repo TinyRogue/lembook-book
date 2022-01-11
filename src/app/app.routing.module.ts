@@ -4,6 +4,7 @@ import { BookComponent } from './view/book/book.component';
 import { HomeComponent } from './view/home/home.component';
 import { DiscoverComponent } from './view/home/discover/discover.component';
 import { MyShelfComponent } from './view/home/my-shelf/my-shelf.component';
+import { HomeGuard } from './view/home/home.guard';
 
 const routes: Routes = [
   {
@@ -19,9 +20,10 @@ const routes: Routes = [
         component: MyShelfComponent,
       },
     ],
+    canActivate: [HomeGuard],
   },
   { path: '', component: BookComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'BookComponent' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
