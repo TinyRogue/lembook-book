@@ -6,10 +6,10 @@ export const LOGIN_USER_KEY = '[Auth] LOGIN_USER_KEY';
 export const LOGOUT_USER_KEY = '[Auth] LOGOUT_USER_KEY';
 export const LOGIN_FAIL = '[Auth] LOGIN_FAIL';
 
+export const loginStart = createAction(LOGIN_START_KEY, props<LoginReq>());
 export const loginUser = createAction(
   LOGIN_USER_KEY,
   props<{ username: string; expirationDate: Date; userUID: string }>()
 );
 export const logoutUser = createAction(LOGOUT_USER_KEY);
-export const loginStart = createAction(LOGIN_START_KEY, props<LoginReq>());
 export const loginFail = createAction(LOGIN_FAIL, props<{ authError: any }>());

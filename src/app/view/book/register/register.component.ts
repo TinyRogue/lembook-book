@@ -1,11 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { RegisterService } from './register.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { finalize, tap } from 'rxjs/operators';
-import { namedRegexValidator } from '../../../pkg/validators/named-regex.validator';
-import { ToastService } from '../../../pkg/components/toast/toast.service';
-import { ToastEnum } from '../../../pkg/components/toast/toast.enum';
+import { namedRegexValidator } from '@pkg/validators/named-regex.validator';
+import { ToastService } from '@pkg/components/toast/toast.service';
+import { ToastEnum } from '@pkg/components/toast/toast.enum';
 import { faSadCry } from '@fortawesome/free-solid-svg-icons';
+import { startLoading, stopLoading } from '../store/book.actions';
+import { AppState } from '@store/app.reducer';
+import { registerStart } from './store/register.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-register',
@@ -37,8 +39,8 @@ export class RegisterComponent implements OnInit {
   };
 
   constructor(
-    private readonly _gqlService: RegisterService,
-    private readonly _toast: ToastService
+    private readonly _toast: ToastService,
+    private readonly _store: Store<AppState>
   ) {}
 
   ngOnInit() {
@@ -61,40 +63,34 @@ export class RegisterComponent implements OnInit {
         Validators.required,
       ]),
     });
+
+    this._store
+      .select((state) => state.register)
+      .subscribe((registerData) => {
+        setTimeout(() => this._store.dispatch(stopLoading()), 500);
+        if (registerData.authError?.networkError) {
+          this._toast.makeToast(this._errConnToast);
+        } else if (registerData.authError) {
+          this._toast.makeToast(this._errExistsToast);
+        } else if (registerData.success) {
+          this._toast.makeToast(this._successToast);
+        }
+      });
   }
 
   register() {
     this.credentials = this.form!.getRawValue();
-    console.log(this.credentials.password, this.credentials.repeatedPassword);
-    console.log(
-      this.credentials.password === this.credentials.repeatedPassword
-    );
     if (
       this.form?.valid &&
       this.credentials.password === this.credentials.repeatedPassword
     ) {
-      this.loadingEmitter.emit(true);
-      this._gqlService
-        .register({
+      this._store.dispatch(startLoading());
+      this._store.dispatch(
+        registerStart({
           username: this.credentials.email,
           password: this.credentials.password,
         })
-        .pipe(
-          tap({
-            next: async (data) => {
-              this._toast.makeToast(this._successToast);
-            },
-            error: (data) => {
-              if (data.networkError) {
-                this._toast.makeToast(this._errConnToast);
-              } else {
-                this._toast.makeToast(this._errExistsToast);
-              }
-            },
-          }),
-          finalize(() => this.loadingEmitter.emit(false))
-        )
-        .subscribe();
+      );
     }
   }
 

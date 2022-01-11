@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromRoot from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './view/book/login/store/auth.effects';
+import { RegisterEffects } from './view/book/register/store/register.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,7 @@ import { AuthEffects } from './view/book/login/store/auth.effects';
     HomeModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(fromRoot.appReducer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, RegisterEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

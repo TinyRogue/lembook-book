@@ -60,20 +60,13 @@ export class LoginComponent implements OnInit {
     this._store
       .select((state) => state.auth)
       .subscribe(async (authData) => {
-        console.log(`Im done with`);
-        console.log(authData);
         setTimeout(() => this._store.dispatch(stopLoading()), 500);
         if (authData.authError?.networkError) {
           this._toast.makeToast(this.noSignalToast);
         } else if (authData.authError) {
           this._toast.makeToast(this.invalidDataToast);
-        }
-
-        if (authData?.userUID) {
+        } else if (authData?.userUID) {
           this._toast.makeToast(this.successToast);
-          await this._router.navigate(['home'], {
-            relativeTo: this._route,
-          });
         }
       });
   }

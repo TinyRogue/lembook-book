@@ -23,8 +23,6 @@ export class DiscoverComponent {
     private readonly _store: Store<fromRoot.AppState>
   ) {
     this.userUID$ = this._store.select((state) => state);
-    this.userUID$.subscribe((test) => {
-      console.log(test.auth.userUID);
-    });
+    this.userUID$.subscribe((test) => {});
   }
 }

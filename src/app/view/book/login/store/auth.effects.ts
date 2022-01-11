@@ -1,6 +1,6 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AuthActions from './auth.actions';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { Apollo } from 'apollo-angular';
 import { of } from 'rxjs';
 import { LoginReq } from '@models/login-req.json';
@@ -35,6 +35,17 @@ export class AuthEffects {
           );
       })
     )
+  );
+
+  loginSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.loginUser),
+        tap(async () => {
+          await this._router.navigate(['home'], { relativeTo: this._route });
+        })
+      ),
+    { dispatch: false }
   );
 
   constructor(
