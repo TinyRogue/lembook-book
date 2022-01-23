@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './view/book/login/store/auth.effects';
 import { RegisterEffects } from './view/book/register/store/register.effects';
 import { DiscoverEffects } from './view/home/discover/store/discover.effects';
+import { ProfileEffects } from './view/home/profile/store/profile.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,12 @@ import { DiscoverEffects } from './view/home/discover/store/discover.effects';
     HomeModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(fromRoot.appReducer),
-    EffectsModule.forRoot([AuthEffects, RegisterEffects, DiscoverEffects]),
+    EffectsModule.forRoot([
+      AuthEffects,
+      RegisterEffects,
+      DiscoverEffects,
+      ProfileEffects,
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],

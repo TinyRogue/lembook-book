@@ -32,6 +32,10 @@ type User {
   Username: String!
   Password: String!
   Token: [String]
+  LikedBooks: [String]
+  WillingToRead: [String]
+  DislikedBooks: [String]
+  LikedGenres: [String]
 }
 
 type Book {
@@ -52,13 +56,24 @@ type UsersBooks {
   slices: [CategorizedBooks!]
 }
 
+type Genre {
+  name: String!
+  liked: Boolean!
+}
+
+type Genres {
+  genres: [Genre]!
+}
+
 type Query {
   ping: String!
   authorisedPing: String!
   books(input: UserID): UsersBooks!
+  genres(input: UserID): Genres!
 }
 
 type Mutation {
+  likeGenre(input: String): Depiction!
   register(input: Registration!): Depiction!
   login(input: Login!): Depiction!
   loginWithJWT: UserMeta!

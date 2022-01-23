@@ -15,8 +15,17 @@
         <span class="dot" routerLinkActive="dot-visible"></span>
         <a class="nav-link">Moja półka</a>
         <img
-          src="../../../assets/icons/books-dark.svg"
+          src="assets/icons/books-dark.svg"
           alt="My collection icon"
+          class="nav-icon"
+        />
+      </div>
+      <div [routerLink]="['profile']" class="nav-item">
+        <span class="dot" routerLinkActive="dot-visible"></span>
+        <a class="nav-link">Mój profil</a>
+        <img
+          src="assets/icons/profile.svg"
+          alt="Settings icon"
           class="nav-icon"
         />
       </div>

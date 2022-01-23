@@ -5,6 +5,7 @@ import { HomeComponent } from './view/home/home.component';
 import { DiscoverComponent } from './view/home/discover/discover.component';
 import { MyShelfComponent } from './view/home/my-shelf/my-shelf.component';
 import { HomeGuard } from './view/home/home.guard';
+import { ProfileComponent } from './view/home/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'my-shelf',
         component: MyShelfComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
     ],
     canActivate: [HomeGuard],

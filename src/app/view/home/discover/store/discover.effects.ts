@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, retry, switchMap, withLatestFrom } from 'rxjs/operators';
+import {
+  catchError,
+  map,
+  retry,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs/operators';
 import {
   GET_CATEGORIZED_BOOKS_KEY,
+  getCategorizedBooksFailed,
   getCategorizedBooksSuccess,
 } from './discover.actions';
 import { AppState } from '@store/app.reducer';
 import { Store } from '@ngrx/store';
 import { DiscoverService } from '../discover.service';
+import { of } from 'rxjs';
 
 @Injectable()
 export class DiscoverEffects {
@@ -26,8 +34,8 @@ export class DiscoverEffects {
                 slices: res.data.books.slices,
               });
             }),
-            retry(3)
-            // catchError((error) => of(getCategorizedBooksFailed({ error })))
+            retry(3),
+            catchError((error) => of(getCategorizedBooksFailed({ error })))
           );
       })
     )

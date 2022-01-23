@@ -44,9 +44,6 @@ export class DiscoverComponent implements OnInit {
         });
       }
     });
-    this.discoveredBooks$.subscribe((b) => {
-      console.log(b);
-    });
   }
 
   ngOnInit() {
