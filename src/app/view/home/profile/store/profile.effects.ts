@@ -50,7 +50,7 @@ export class ProfileEffects {
       ofType(LIKE_GENRE_KEY),
       switchMap((data: { genre: string } & TypedAction<any>) => {
         return this._profileService.likeGenre(data.genre).pipe(
-          map((resData) => getGenres()),
+          map(() => getGenres()),
           catchError((error) => {
             return of(likeGenreFailed({ error }));
           })
