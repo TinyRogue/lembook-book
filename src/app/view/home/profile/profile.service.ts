@@ -23,6 +23,14 @@ const likeGenre = gql`
   }
 `;
 
+const dislikeGenre = gql`
+  mutation dislikeGenre($genre: String!) {
+    dislikeGenre(input: $genre) {
+      res
+    }
+  }
+`;
+
 @Injectable()
 export class ProfileService {
   constructor(private readonly _apollo: Apollo) {}
@@ -40,6 +48,22 @@ export class ProfileService {
   likeGenre(genre: string) {
     return this._apollo.mutate({
       mutation: likeGenre,
+      variables: {
+        genre,
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        likeGenre: {
+          __typename: 'Depiction',
+          res: '',
+        },
+      },
+    });
+  }
+
+  dislikeGenre(genre: string) {
+    return this._apollo.mutate({
+      mutation: dislikeGenre,
       variables: {
         genre,
       },

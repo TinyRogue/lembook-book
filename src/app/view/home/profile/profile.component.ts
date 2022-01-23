@@ -6,7 +6,7 @@ import * as fromRoot from '@store/app.reducer';
 import { ToastEnum } from '@pkg/components/toast/toast.enum';
 import { Genre } from '@models/genres-res';
 import { ProfileService } from './profile.service';
-import { getGenres, likeGenre } from './store/profile.actions';
+import { dislikeGenre, getGenres, likeGenre } from './store/profile.actions';
 import { ProfileUtils } from './profile.utils';
 
 @Component({
@@ -60,5 +60,9 @@ export class ProfileComponent implements OnInit {
 
   likeGenre(genre: string) {
     this._store.dispatch(likeGenre({ genre }));
+  }
+
+  dislikeGenre(genre: string) {
+    this._store.dispatch(dislikeGenre({ genre }));
   }
 }

@@ -26,3 +26,15 @@ export const likeGenreFailed = createAction(
   LIKE_GENRE_FAILED_KEY,
   props<{ error: any }>()
 );
+
+export const DISLIKE_GENRE_KEY = '[Profile] DISLIKE_GENRE_KEY';
+export const DISLIKE_GENRE_FAILED_KEY = '[Profile] DISLIKE_GENRE_FAILED_KEY';
+
+export const dislikeGenre = createAction(
+  DISLIKE_GENRE_KEY,
+  props<{ genre: string }>()
+);
+export const dislikeGenreFailed = createAction(
+  DISLIKE_GENRE_FAILED_KEY,
+  props<{ error: any }>()
+);

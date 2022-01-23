@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@store/app.reducer';
 import { Injectable } from '@angular/core';
 import {
+  DISLIKE_GENRE_KEY,
+  dislikeGenreFailed,
   GET_GENRES_KEY,
   getGenres,
   getGenresFailed,
@@ -53,6 +55,20 @@ export class ProfileEffects {
           map(() => getGenres()),
           catchError((error) => {
             return of(likeGenreFailed({ error }));
+          })
+        );
+      })
+    )
+  );
+
+  dislikeGenre$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DISLIKE_GENRE_KEY),
+      switchMap((data: { genre: string } & TypedAction<any>) => {
+        return this._profileService.dislikeGenre(data.genre).pipe(
+          map(() => getGenres()),
+          catchError((error) => {
+            return of(dislikeGenreFailed({ error }));
           })
         );
       })
