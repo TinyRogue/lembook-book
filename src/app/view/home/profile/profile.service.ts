@@ -69,7 +69,7 @@ export class ProfileService {
       },
       optimisticResponse: {
         __typename: 'Mutation',
-        likeGenre: {
+        dislikeGenre: {
           __typename: 'Depiction',
           res: '',
         },

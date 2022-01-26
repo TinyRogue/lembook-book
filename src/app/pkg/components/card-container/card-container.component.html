@@ -5,12 +5,12 @@
     <ng-container *ngIf="books.length !== 0">
       <article class="card" *ngFor="let book of books">
         <div class="image-container">
-          <img [src]="book.coverURL" alt="book's photo" />
+          <img [src]="getCoverURL(book.cover!)" alt="book's photo" />
         </div>
         <header class="card-header">
-          <p class="author">{{ book.author }}</p>
+          <p class="author">{{ book.authors?.[0] }}</p>
           <p class="title">{{ book.title }}</p>
-          <p class="genre">{{ book.genre }}</p>
+          <p class="genre">{{ book.genres?.[0] }}</p>
           <div class="actions">
             <button mat-icon-button class="read">
               <fa-icon class="icon" [icon]="bookIcon"></fa-icon>

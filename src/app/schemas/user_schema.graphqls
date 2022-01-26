@@ -40,11 +40,11 @@ type User {
 
 type Book {
   uid: String!
-  author: String
+  authors: [String]
   title: String
   description: String
-  coverURL: String
-  genre: String
+  cover: String
+  genres: [String]
 }
 
 type CategorizedBooks {

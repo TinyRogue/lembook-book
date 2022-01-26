@@ -11,54 +11,14 @@ import { Book } from '@models/user-books-res.json';
 export class CardContainerComponent {
   @Input() sectionName: string = 'To może być wszystko';
   @Input() books: Book[] = [];
-
-  // @Input() cards: CardModel[] = [
-  //   {
-  //     author: 'autor',
-  //     title: 'tytuł',
-  //     coverURL: `https://picsum.photos/1000?param=${Math.random()}`,
-  //     genre: 'gatunek',
-  //   },
-  //   {
-  //     author: 'autor',
-  //     title: 'tytuł',
-  //     coverURL: `https://picsum.photos/500?param=${Math.random()}`,
-  //     genre: 'gatunek',
-  //   },
-  //   {
-  //     author: 'autor',
-  //     title: 'tytuł',
-  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-  //     genre: 'gatunek',
-  //   },
-  //   {
-  //     author: 'autor',
-  //     title: 'tytuł',
-  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-  //     genre: 'gatunek',
-  //   },
-  //   {
-  //     author: 'autor',
-  //     title: 'tytuł',
-  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-  //     genre: 'gatunek',
-  //   },
-  //   {
-  //     author: 'autor',
-  //     title: 'tytuł',
-  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-  //     genre: 'gatunek',
-  //   },
-  //   {
-  //     author: 'autor',
-  //     title: 'tytuł',
-  //     coverURL: `https://picsum.photos/200/300?param=${Math.random()}`,
-  //     genre: 'gatunek',
-  //   },
-  // ];
-
   readonly heartIcon = faHeart;
   readonly bookIcon = faBook;
   readonly bombIcon = faBomb;
   readonly loadingCards = Array(20).fill(0);
+
+  getCoverURL(id: string | undefined) {
+    return id
+      ? `https://covers.openlibrary.org/b/ID/${id}-M.jpg`
+      : '../../../assets/photo/cover.png';
+  }
 }

@@ -9,9 +9,9 @@ export class CategorizedBooks {
 
 export class Book {
   uid: string | undefined;
-  author: string | undefined;
+  authors: string[] | undefined;
   title: string | undefined;
   description: string | undefined;
-  coverURL: string | undefined;
-  genre: string | undefined;
+  cover: string | undefined;
+  genres: string[] | undefined;
 }

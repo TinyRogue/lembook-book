@@ -11,10 +11,10 @@ const books = gql`
         genre
         books {
           uid
-          author
+          authors
           title
-          genre
-          coverURL
+          genres
+          cover
           description
         }
       }
@@ -32,6 +32,7 @@ export class DiscoverService {
       variables: {
         userID,
       },
+      fetchPolicy: 'no-cache',
     });
   }
 }

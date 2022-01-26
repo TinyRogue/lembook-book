@@ -36,6 +36,7 @@
   font-family: $cormorant;
   padding: 0.75rem;
   transition: 300ms;
+  text-transform: capitalize;
 
   &-empty {
     margin: 2rem calc(#{$baseline} * 2) 0 calc(#{$baseline} * 2);
@@ -51,7 +52,7 @@
 
 .card {
   height: 450px;
-  min-width: 275px;
+  min-width: 300px;
   aspect-ratio: 1 / 1.4;
   border-radius: 16px;
   background: #17141d;
@@ -130,6 +131,11 @@
       font-weight: 200;
       padding-top: $baseline;
       font-size: calc(#{$base-font-size} * 1.25);
+      width: 70%;
+      text-transform: capitalize;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 
       &-empty {
         margin-top: 2em;
@@ -142,6 +148,11 @@
       font-weight: bold;
       padding-top: calc(#{$baseline} * 0.5);
       font-size: calc(#{$base-font-size} * 1.25);
+      width: 70%;
+      text-transform: capitalize;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 
       &-empty {
         text-shadow: 0 0 0.5em $text-dark;
@@ -158,6 +169,11 @@
       border: 2px solid $text-dark;
       font-size: calc(#{$base-font-size} * 0.85);
       width: min-content;
+      max-width: 140px;
+      text-transform: capitalize;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 
       &-empty {
         text-shadow: 0 0 1em $white;

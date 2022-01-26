@@ -38,9 +38,9 @@ export class DiscoverComponent implements OnInit {
       } else {
         this._toastService.makeToast({
           type: ToastEnum.success,
-          title: 'Wczytano!',
+          title: 'Wczytano.',
           hidden: false,
-          text: '',
+          text: 'Częstuj się!',
         });
       }
     });
