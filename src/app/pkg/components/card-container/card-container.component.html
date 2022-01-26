@@ -3,31 +3,43 @@
   <div class="card-container">
     <ng-container *ngIf="books">
       <ng-container *ngIf="books.length !== 0">
-        <article class="card" *ngFor="let book of books">
-          <div class="image-container" (click)="cardClick.emit()">
+        <article
+          class="card"
+          *ngFor="let book of books"
+          [ngClass]="{
+            'loved-card': book.inList === 1,
+            'disliked-card': book.inList === 2,
+            wtr: book.inList === 3
+          }"
+        >
+          <div class="image-container" (click)="cardClick.emit(book)">
             <img [src]="getCoverURL(book.cover!)" alt="book's photo" />
           </div>
           <header class="card-header">
-            <p (click)="cardClick.emit()" class="author">
+            <p (click)="cardClick.emit(book)" class="author">
               {{ book.authors?.[0] }}
             </p>
-            <p (click)="cardClick.emit()" class="title">{{ book.title }}</p>
-            <p (click)="cardClick.emit()" class="genre">
+            <p (click)="cardClick.emit(book)" class="title">{{ book.title }}</p>
+            <p (click)="cardClick.emit(book)" class="genre">
               {{ book.genres?.[0] }}
             </p>
             <div class="actions">
               <button
-                (click)="wantToReadClick.emit()"
+                (click)="wantToReadClick.emit(book)"
                 mat-icon-button
                 class="read"
               >
                 <fa-icon class="icon" [icon]="bookIcon"></fa-icon>
               </button>
-              <button (click)="loveClick.emit()" mat-icon-button class="like">
+              <button
+                (click)="loveClick.emit(book)"
+                mat-icon-button
+                class="like"
+              >
                 <fa-icon class="icon" [icon]="heartIcon"></fa-icon>
               </button>
               <button
-                (click)="dislikeClick.emit()"
+                (click)="dislikeClick.emit(book)"
                 mat-icon-button
                 class="dislike"
               >

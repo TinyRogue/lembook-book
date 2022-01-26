@@ -12,10 +12,10 @@ export class CardContainerComponent {
   @Input() sectionName: string = 'To może być wszystko';
   @Input() books: Book[] | null = null;
   @Input() templateText: string = 'Jeszcze nie masz tu żadnej książki.';
-  @Output() cardClick = new EventEmitter<never>();
-  @Output() loveClick = new EventEmitter<never>();
-  @Output() dislikeClick = new EventEmitter<never>();
-  @Output() wantToReadClick = new EventEmitter<never>();
+  @Output() cardClick = new EventEmitter<Book>();
+  @Output() loveClick = new EventEmitter<Book>();
+  @Output() dislikeClick = new EventEmitter<Book>();
+  @Output() wantToReadClick = new EventEmitter<Book>();
   readonly heartIcon = faHeart;
   readonly bookIcon = faBook;
   readonly bombIcon = faBomb;

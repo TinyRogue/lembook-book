@@ -4,8 +4,13 @@ import { ToastService } from '@pkg/components/toast/toast.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '@store/app.reducer';
-import { getCategorizedBooks } from './store/discover.actions';
-import { CategorizedBooks } from '@models/user-books-res.json';
+import {
+  addBookToWTR,
+  dislikeBook,
+  getCategorizedBooks,
+  loveBook,
+} from './store/discover.actions';
+import { Book, CategorizedBooks } from '@models/user-books-res.json';
 import { ToastEnum } from '@pkg/components/toast/toast.enum';
 
 @Component({
@@ -50,7 +55,19 @@ export class DiscoverComponent implements OnInit {
     this._store.dispatch(getCategorizedBooks());
   }
 
-  log(m: string) {
-    console.log(m);
+  love(book: Book) {
+    this._store.dispatch(loveBook({ book }));
+  }
+
+  dislike(book: Book) {
+    this._store.dispatch(dislikeBook({ book }));
+  }
+
+  addToWTR(book: Book) {
+    this._store.dispatch(addBookToWTR({ book }));
+  }
+
+  showDetails(book: Book) {
+    alert(book.description);
   }
 }

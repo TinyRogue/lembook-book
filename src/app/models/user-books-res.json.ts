@@ -14,4 +14,5 @@ export class Book {
   description: string | undefined;
   cover: string | undefined;
   genres: string[] | undefined;
+  inList: number | undefined;
 }

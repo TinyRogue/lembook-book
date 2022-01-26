@@ -3,10 +3,10 @@
     <app-card-container
       [sectionName]="slice.genre ?? ''"
       [books]="slice?.books ?? []"
-      (cardClick)="log('card')"
-      (loveClick)="log('like')"
-      (dislikeClick)="log('dis')"
-      (wantToReadClick)="log('wtr')"
+      (cardClick)="showDetails($event)"
+      (loveClick)="love($event)"
+      (dislikeClick)="dislike($event)"
+      (wantToReadClick)="addToWTR($event)"
     >
     </app-card-container>
   </ng-container>

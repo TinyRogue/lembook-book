@@ -16,6 +16,7 @@ import { AppState } from '@store/app.reducer';
 import { Store } from '@ngrx/store';
 import { DiscoverService } from '../discover.service';
 import { of } from 'rxjs';
+import { Book } from '@models/user-books-res.json';
 
 @Injectable()
 export class DiscoverEffects {
@@ -31,7 +32,7 @@ export class DiscoverEffects {
           .pipe(
             map((res) => {
               return getCategorizedBooksSuccess({
-                slices: res.data.books.slices,
+                slices: res.data.categorizedBooks.slices,
               });
             }),
             retry(3),
@@ -40,6 +41,15 @@ export class DiscoverEffects {
       })
     )
   );
+
+  // $love = createEffect(() => this.actions$.pipe(
+  //   ofType(LOVE_BOOK_KEY),
+  //   switchMap((data: { book: Book }) => {
+  //     return this._discoverService.loveBook(data.book.uid).pipe(
+  //       map()
+  //     )
+  //   })
+  // ));
 
   constructor(
     private actions$: Actions,

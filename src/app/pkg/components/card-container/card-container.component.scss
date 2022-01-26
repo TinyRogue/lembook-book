@@ -227,3 +227,15 @@
   font-size: calc(#{$base-font-size} * 1.4);
   font-family: $lato;
 }
+
+.disliked-card {
+  background: linear-gradient(45deg, $dark-blue 0%, #17141d 5%);
+}
+
+.loved-card {
+  background: linear-gradient(45deg, $intense-red 0%, #17141d 5%);
+}
+
+.wtr {
+  background: linear-gradient(45deg, $orange 0%, #17141d 5%);
+}
