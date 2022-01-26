@@ -133,7 +133,7 @@ export class DiscoverService {
     });
   }
 
-  canceldislikeBook(bookUID: string) {
+  cancelDislikeBook(bookUID: string) {
     return this._apollo.mutate({
       mutation: cancelDislikeBook,
       variables: {

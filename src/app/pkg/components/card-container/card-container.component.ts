@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faBomb, faBook } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { Book } from '@models/user-books-res.json';
+import { BookLists } from '../../../view/home/discover/discover.utils';
 
 @Component({
   selector: 'app-card-container',
@@ -20,6 +21,7 @@ export class CardContainerComponent {
   readonly bookIcon = faBook;
   readonly bombIcon = faBomb;
   readonly loadingCards = Array(20).fill(0);
+  readonly lists = BookLists;
 
   getCoverURL(id: string | undefined) {
     return id

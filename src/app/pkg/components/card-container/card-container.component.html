@@ -7,9 +7,9 @@
           class="card"
           *ngFor="let book of books"
           [ngClass]="{
-            'loved-card': book.inList === 1,
-            'disliked-card': book.inList === 2,
-            wtr: book.inList === 3
+            'loved-card': book.inList === lists.LOVED,
+            'disliked-card': book.inList === lists.DISLIKED,
+            wtr: book.inList === lists.WTR
           }"
         >
           <div class="image-container" (click)="cardClick.emit(book)">

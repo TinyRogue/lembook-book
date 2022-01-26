@@ -6,12 +6,16 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '@store/app.reducer';
 import {
   addBookToWTR,
+  cancelAddBookToWTR,
+  cancelDislikeBook,
+  cancelLoveBook,
   dislikeBook,
   getCategorizedBooks,
   loveBook,
 } from './store/discover.actions';
 import { Book, CategorizedBooks } from '@models/user-books-res.json';
 import { ToastEnum } from '@pkg/components/toast/toast.enum';
+import { BookLists } from './discover.utils';
 
 @Component({
   selector: 'app-discover',
@@ -21,6 +25,7 @@ import { ToastEnum } from '@pkg/components/toast/toast.enum';
 export class DiscoverComponent implements OnInit {
   discoveredBooks$: Observable<CategorizedBooks[] | null>;
   errorWatcher$: Observable<any>;
+  actionErrorWatcher$: Observable<any>;
   category: string = '';
 
   constructor(
@@ -49,6 +54,19 @@ export class DiscoverComponent implements OnInit {
         });
       }
     });
+    this.actionErrorWatcher$ = this._store.select(
+      (state) => state.discover.actionError
+    );
+    this.actionErrorWatcher$.subscribe((error) => {
+      if (error) {
+        this._toastService.makeToast({
+          type: ToastEnum.danger,
+          title: 'Ojoj!',
+          hidden: false,
+          text: error,
+        });
+      }
+    });
   }
 
   ngOnInit() {
@@ -56,15 +74,27 @@ export class DiscoverComponent implements OnInit {
   }
 
   love(book: Book) {
-    this._store.dispatch(loveBook({ book }));
+    if (book.inList === BookLists.LOVED) {
+      this._store.dispatch(cancelLoveBook({ book }));
+    } else {
+      this._store.dispatch(loveBook({ book }));
+    }
   }
 
   dislike(book: Book) {
-    this._store.dispatch(dislikeBook({ book }));
+    if (book.inList === BookLists.DISLIKED) {
+      this._store.dispatch(cancelDislikeBook({ book }));
+    } else {
+      this._store.dispatch(dislikeBook({ book }));
+    }
   }
 
   addToWTR(book: Book) {
-    this._store.dispatch(addBookToWTR({ book }));
+    if (book.inList === BookLists.WTR) {
+      this._store.dispatch(cancelAddBookToWTR({ book }));
+    } else {
+      this._store.dispatch(addBookToWTR({ book }));
+    }
   }
 
   showDetails(book: Book) {
