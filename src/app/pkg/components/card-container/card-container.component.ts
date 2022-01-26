@@ -10,7 +10,8 @@ import { Book } from '@models/user-books-res.json';
 })
 export class CardContainerComponent {
   @Input() sectionName: string = 'To może być wszystko';
-  @Input() books: Book[] = [];
+  @Input() books: Book[] | null = null;
+  @Input() templateText: string = 'Jeszcze nie masz tu żadnej książki.';
   readonly heartIcon = faHeart;
   readonly bookIcon = faBook;
   readonly bombIcon = faBomb;

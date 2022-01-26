@@ -219,3 +219,11 @@
     }
   }
 }
+
+.template-text {
+  color: $white;
+  margin: auto;
+  padding: 122.5px 0;
+  font-size: calc(#{$base-font-size} * 1.4);
+  font-family: $lato;
+}

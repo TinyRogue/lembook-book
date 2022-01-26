@@ -8,7 +8,17 @@
   </ng-container>
 </ng-container>
 <ng-container *ngIf="!(discoveredBooks$ | async)">
-  <app-card-container> </app-card-container>
-  <app-card-container> </app-card-container>
-  <!--  <app-card-container> </app-card-container>-->
+  <app-card-container
+    [sectionName]="'Tu będą książki specjalnie wybrane pod Twój gust'"
+    [books]="[]"
+    [templateText]="
+      'Polub jakąś kategorię w swoim profilu, a później wróć prędko tutaj!'
+    "
+  >
+  </app-card-container>
+  <app-card-container
+    [sectionName]="'Polub coś, aby przeglądać'"
+    [books]="null"
+  >
+  </app-card-container>
 </ng-container>
