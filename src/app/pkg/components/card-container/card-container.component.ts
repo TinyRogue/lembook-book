@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faBomb, faBook } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { Book } from '@models/user-books-res.json';
@@ -12,6 +12,10 @@ export class CardContainerComponent {
   @Input() sectionName: string = 'To może być wszystko';
   @Input() books: Book[] | null = null;
   @Input() templateText: string = 'Jeszcze nie masz tu żadnej książki.';
+  @Output() cardClick = new EventEmitter<never>();
+  @Output() loveClick = new EventEmitter<never>();
+  @Output() dislikeClick = new EventEmitter<never>();
+  @Output() wantToReadClick = new EventEmitter<never>();
   readonly heartIcon = faHeart;
   readonly bookIcon = faBook;
   readonly bombIcon = faBomb;

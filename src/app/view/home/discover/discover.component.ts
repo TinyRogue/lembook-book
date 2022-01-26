@@ -49,4 +49,8 @@ export class DiscoverComponent implements OnInit {
   ngOnInit() {
     this._store.dispatch(getCategorizedBooks());
   }
+
+  log(m: string) {
+    console.log(m);
+  }
 }

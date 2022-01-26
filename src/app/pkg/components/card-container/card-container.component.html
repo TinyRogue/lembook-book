@@ -4,21 +4,33 @@
     <ng-container *ngIf="books">
       <ng-container *ngIf="books.length !== 0">
         <article class="card" *ngFor="let book of books">
-          <div class="image-container">
+          <div class="image-container" (click)="cardClick.emit()">
             <img [src]="getCoverURL(book.cover!)" alt="book's photo" />
           </div>
           <header class="card-header">
-            <p class="author">{{ book.authors?.[0] }}</p>
-            <p class="title">{{ book.title }}</p>
-            <p class="genre">{{ book.genres?.[0] }}</p>
+            <p (click)="cardClick.emit()" class="author">
+              {{ book.authors?.[0] }}
+            </p>
+            <p (click)="cardClick.emit()" class="title">{{ book.title }}</p>
+            <p (click)="cardClick.emit()" class="genre">
+              {{ book.genres?.[0] }}
+            </p>
             <div class="actions">
-              <button mat-icon-button class="read">
+              <button
+                (click)="wantToReadClick.emit()"
+                mat-icon-button
+                class="read"
+              >
                 <fa-icon class="icon" [icon]="bookIcon"></fa-icon>
               </button>
-              <button mat-icon-button class="like">
+              <button (click)="loveClick.emit()" mat-icon-button class="like">
                 <fa-icon class="icon" [icon]="heartIcon"></fa-icon>
               </button>
-              <button mat-icon-button class="dislike">
+              <button
+                (click)="dislikeClick.emit()"
+                mat-icon-button
+                class="dislike"
+              >
                 <fa-icon class="icon" [icon]="bombIcon"></fa-icon>
               </button>
             </div>
