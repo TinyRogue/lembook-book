@@ -30,7 +30,6 @@ import { Store } from '@ngrx/store';
 import { DiscoverService } from '../discover.service';
 import { of } from 'rxjs';
 import { Book } from '@models/user-books-res.json';
-import { getUsersBookLists } from '../../my-shelf/store/my-shelf.actions';
 
 @Injectable()
 export class DiscoverEffects {
