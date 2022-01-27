@@ -3,13 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AppState } from '@store/app.reducer';
 import { Store } from '@ngrx/store';
 import { MyShelfService } from '../my-shelf.service';
-import {
-  catchError,
-  map,
-  retry,
-  switchMap,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { catchError, map, retry, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import {
   GET_USERS_BOOK_LISTS_KEY,
@@ -28,10 +22,6 @@ import {
   cancelLoveBookFailed,
   DISLIKE_BOOK_KEY,
   dislikeBookFailed,
-  GET_CATEGORIZED_BOOKS_KEY,
-  getCategorizedBooks,
-  getCategorizedBooksFailed,
-  getCategorizedBooksSuccess,
   LOVE_BOOK_KEY,
   loveBookFailed,
 } from '../../discover/store/discover.actions';
