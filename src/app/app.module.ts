@@ -15,6 +15,7 @@ import { AuthEffects } from './view/book/login/store/auth.effects';
 import { RegisterEffects } from './view/book/register/store/register.effects';
 import { DiscoverEffects } from './view/home/discover/store/discover.effects';
 import { ProfileEffects } from './view/home/profile/store/profile.effects';
+import { MyShelfEffects } from './view/home/my-shelf/store/my-shelf.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { ProfileEffects } from './view/home/profile/store/profile.effects';
       AuthEffects,
       RegisterEffects,
       DiscoverEffects,
+      MyShelfEffects,
       ProfileEffects,
     ]),
   ],

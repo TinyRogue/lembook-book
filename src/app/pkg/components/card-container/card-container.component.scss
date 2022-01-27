@@ -193,10 +193,10 @@
         padding: calc(#{$baseline} * 1.25);
         position: relative;
         border-radius: 4rem;
-        border: 1px solid $text-dark-smooth;
+        border: 1px solid darken($intense-green, 20%);
         cursor: pointer;
         outline: inherit;
-        color: $white;
+        color: $intense-green;
         margin: calc(#{$baseline} * 0.75) 0 0 0;
 
         fa-icon {
@@ -209,11 +209,11 @@
 
       .like {
         color: $intense-red;
-        border-color: $intense-red;
+        border-color: $red;
       }
 
       .dislike {
-        color: $dark-blue;
+        color: $blue;
         border-color: $dark-blue;
       }
     }
@@ -229,13 +229,18 @@
 }
 
 .disliked-card {
-  background: linear-gradient(45deg, $dark-blue 0%, #17141d 5%);
+  background: linear-gradient(45deg, #17141d 1.75%, $blue 2%, #17141d 2.25%);
 }
 
 .loved-card {
-  background: linear-gradient(45deg, $intense-red 0%, #17141d 5%);
+  background: linear-gradient(45deg, #17141d 1.75%, #dd3055 2%, #17141d 2.25%);
 }
 
 .wtr {
-  background: linear-gradient(45deg, $orange 0%, #17141d 5%);
+  background: linear-gradient(
+    45deg,
+    #17141d 1.75%,
+    $intense-green 2%,
+    #17141d 2.25%
+  );
 }

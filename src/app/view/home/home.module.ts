@@ -17,6 +17,7 @@ import { HomeGuard } from './home.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileService } from './profile/profile.service';
 import { ProfileUtils } from './profile/profile.utils';
+import { MyShelfService } from './my-shelf/my-shelf.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ProfileUtils } from './profile/profile.utils';
   providers: [
     DiscoverService,
     HomeService,
+    MyShelfService,
     ProfileService,
     ProfileUtils,
     HomeGuard,

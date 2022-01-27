@@ -93,7 +93,7 @@ export class DiscoverService {
       },
       optimisticResponse: {
         __typename: 'Mutation',
-        likeGenre: {
+        loveBook: {
           __typename: 'Depiction',
           res: '',
         },
@@ -109,7 +109,7 @@ export class DiscoverService {
       },
       optimisticResponse: {
         __typename: 'Mutation',
-        likeGenre: {
+        cancelLoveBook: {
           __typename: 'Depiction',
           res: '',
         },
@@ -125,7 +125,7 @@ export class DiscoverService {
       },
       optimisticResponse: {
         __typename: 'Mutation',
-        likeGenre: {
+        dislikeBook: {
           __typename: 'Depiction',
           res: '',
         },
@@ -141,7 +141,7 @@ export class DiscoverService {
       },
       optimisticResponse: {
         __typename: 'Mutation',
-        likeGenre: {
+        cancelDislikeBook: {
           __typename: 'Depiction',
           res: '',
         },
@@ -157,7 +157,7 @@ export class DiscoverService {
       },
       optimisticResponse: {
         __typename: 'Mutation',
-        likeGenre: {
+        addBookToWTR: {
           __typename: 'Depiction',
           res: '',
         },
@@ -173,7 +173,7 @@ export class DiscoverService {
       },
       optimisticResponse: {
         __typename: 'Mutation',
-        likeGenre: {
+        cancelAddBookToWTR: {
           __typename: 'Depiction',
           res: '',
         },

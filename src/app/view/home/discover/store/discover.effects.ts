@@ -30,7 +30,7 @@ import { Store } from '@ngrx/store';
 import { DiscoverService } from '../discover.service';
 import { of } from 'rxjs';
 import { Book } from '@models/user-books-res.json';
-import { ToastService } from '@pkg/components/toast/toast.service';
+import { getUsersBookLists } from '../../my-shelf/store/my-shelf.actions';
 
 @Injectable()
 export class DiscoverEffects {
@@ -153,7 +153,6 @@ export class DiscoverEffects {
   constructor(
     private actions$: Actions,
     private readonly _store: Store<AppState>,
-    private readonly _discoverService: DiscoverService,
-    private readonly _toastService: ToastService
+    private readonly _discoverService: DiscoverService
   ) {}
 }

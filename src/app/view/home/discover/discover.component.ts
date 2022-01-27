@@ -26,7 +26,6 @@ export class DiscoverComponent implements OnInit {
   discoveredBooks$: Observable<CategorizedBooks[] | null>;
   errorWatcher$: Observable<any>;
   actionErrorWatcher$: Observable<any>;
-  category: string = '';
 
   constructor(
     private readonly _discoverService: DiscoverService,
