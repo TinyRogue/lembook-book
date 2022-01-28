@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { gql } from '@apollo/client/core';
+import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { UserIDReq } from '@models/user-id-req.json';
 import { UserBooksRes } from '@models/user-books-res.json';
@@ -7,6 +7,25 @@ import { UserBooksRes } from '@models/user-books-res.json';
 const categorizedBooks = gql`
   query CategorizedBooks($userID: UserID!) {
     categorizedBooks(input: $userID) {
+      slices {
+        genre
+        books {
+          uid
+          authors
+          title
+          genres
+          cover
+          description
+          inList
+        }
+      }
+    }
+  }
+`;
+
+const predictedBooks = gql`
+  query PredictedBooks {
+    predictedBooks {
       slices {
         genre
         books {
@@ -81,6 +100,13 @@ export class DiscoverService {
       variables: {
         userID,
       },
+      fetchPolicy: 'no-cache',
+    });
+  }
+
+  getPredictedBooks() {
+    return this._apollo.query<{ predictedBooks: UserBooksRes }>({
+      query: predictedBooks,
       fetchPolicy: 'no-cache',
     });
   }

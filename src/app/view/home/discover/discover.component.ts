@@ -11,6 +11,7 @@ import {
   cancelLoveBook,
   dislikeBook,
   getCategorizedBooks,
+  getPredictedBooks,
   loveBook,
 } from './store/discover.actions';
 import { Book, CategorizedBooks } from '@models/user-books-res.json';
@@ -23,9 +24,11 @@ import { BookLists } from './discover.utils';
   styleUrls: ['discover.component.scss'],
 })
 export class DiscoverComponent implements OnInit {
+  predictedBooks$: Observable<CategorizedBooks | null>;
   discoveredBooks$: Observable<CategorizedBooks[] | null>;
   errorWatcher$: Observable<any>;
   actionErrorWatcher$: Observable<any>;
+  predictedErrorWatcher$: Observable<any>;
 
   constructor(
     private readonly _discoverService: DiscoverService,
@@ -35,6 +38,10 @@ export class DiscoverComponent implements OnInit {
     this.discoveredBooks$ = this._store.select(
       (state) => state.discover.categorizedBooks
     );
+    this.predictedBooks$ = this._store.select(
+      (state) => state.discover.predictedBooks
+    );
+    this.predictedBooks$.subscribe((data) => console.log(data));
     this.errorWatcher$ = this._store.select((state) => state.discover.error);
     this.errorWatcher$.subscribe((error) => {
       if (error) {
@@ -66,9 +73,23 @@ export class DiscoverComponent implements OnInit {
         });
       }
     });
+    this.predictedErrorWatcher$ = this._store.select(
+      (state) => state.discover.actionError
+    );
+    this.predictedErrorWatcher$.subscribe((error) => {
+      if (error) {
+        this._toastService.makeToast({
+          type: ToastEnum.danger,
+          title: 'Ach!',
+          hidden: false,
+          text: 'Rekomendacja nie powiodła się',
+        });
+      }
+    });
   }
 
   ngOnInit() {
+    this._store.dispatch(getPredictedBooks());
     this._store.dispatch(getCategorizedBooks());
   }
 

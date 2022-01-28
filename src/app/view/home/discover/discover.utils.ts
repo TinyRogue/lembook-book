@@ -4,3 +4,5 @@ export const BookLists = {
   DISLIKED: 2,
   WTR: 3,
 };
+
+export class BookAction {}

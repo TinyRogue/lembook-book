@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import {
-  catchError,
-  map,
-  retry,
-  switchMap,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import {
   ADD_BOOK_TO_WTR_KEY,
   addBookToWTRFailed,
@@ -21,15 +15,24 @@ import {
   CANCEL_LOVE_BOOK_KEY,
   cancelLoveBookFailed,
   GET_CATEGORIZED_BOOKS_KEY,
-  getCategorizedBooks,
   getCategorizedBooksFailed,
   getCategorizedBooksSuccess,
+  GET_PREDICTED_BOOKS_KEY,
+  getPredictedBooksSuccess,
+  getPredictedBooksFailed,
+  loveBookSuccess,
+  dislikeBookSuccess,
+  addBookToWTRSuccess,
+  cancelLoveBookSuccess,
+  cancelDislikeBookSuccess,
+  cancelAddBookToWTRSuccess,
 } from './discover.actions';
 import { AppState } from '@store/app.reducer';
 import { Store } from '@ngrx/store';
 import { DiscoverService } from '../discover.service';
 import { of } from 'rxjs';
 import { Book } from '@models/user-books-res.json';
+import { BookLists } from '../discover.utils';
 
 @Injectable()
 export class DiscoverEffects {
@@ -48,9 +51,33 @@ export class DiscoverEffects {
                 slices: res.data.categorizedBooks.slices,
               });
             }),
-            retry(3),
             catchError((error) => of(getCategorizedBooksFailed({ error })))
           );
+      })
+    )
+  );
+
+  $getPredictedBooks = createEffect(() =>
+    this.actions$.pipe(
+      ofType(GET_PREDICTED_BOOKS_KEY),
+      switchMap(() => {
+        return this._discoverService.getPredictedBooks().pipe(
+          map((res) => {
+            let books = res.data.predictedBooks.slices?.[0].books;
+            for (let i = 0; i < books?.length!; i++) {
+              for (let j = 0; j < books!.length; j++) {
+                if (books![i].title === books![j].title && i !== j) {
+                  books?.splice(j, 1);
+                }
+              }
+            }
+            return getPredictedBooksSuccess({
+              books: books,
+              genre: res.data.predictedBooks.slices?.[0].genre,
+            });
+          }),
+          catchError((error) => of(getPredictedBooksFailed({ error })))
+        );
       })
     )
   );
@@ -60,7 +87,9 @@ export class DiscoverEffects {
       ofType(LOVE_BOOK_KEY),
       switchMap((data: { book: Book }) => {
         return this._discoverService.loveBook(data.book.uid!).pipe(
-          map(() => getCategorizedBooks()),
+          map(() =>
+            loveBookSuccess({ book: data.book, bookAction: BookLists.LOVED })
+          ),
           catchError(() => {
             return of(loveBookFailed({ error: 'Nie udało się polubić...' }));
           })
@@ -74,7 +103,12 @@ export class DiscoverEffects {
       ofType(DISLIKE_BOOK_KEY),
       switchMap((data: { book: Book }) => {
         return this._discoverService.dislikeBook(data.book.uid!).pipe(
-          map(() => getCategorizedBooks()),
+          map(() =>
+            dislikeBookSuccess({
+              book: data.book,
+              bookAction: BookLists.DISLIKED,
+            })
+          ),
           catchError(() => {
             return of(dislikeBookFailed({ error: 'Nie udało się odlubić...' }));
           })
@@ -88,7 +122,9 @@ export class DiscoverEffects {
       ofType(ADD_BOOK_TO_WTR_KEY),
       switchMap((data: { book: Book }) => {
         return this._discoverService.addBookToWTR(data.book.uid!).pipe(
-          map(() => getCategorizedBooks()),
+          map(() =>
+            addBookToWTRSuccess({ book: data.book, bookAction: BookLists.WTR })
+          ),
           catchError(() => {
             return of(
               addBookToWTRFailed({ error: 'Nie dodano do czytelni...' })
@@ -104,7 +140,12 @@ export class DiscoverEffects {
       ofType(CANCEL_LOVE_BOOK_KEY),
       switchMap((data: { book: Book }) => {
         return this._discoverService.cancelLoveBook(data.book.uid!).pipe(
-          map(() => getCategorizedBooks()),
+          map(() =>
+            cancelLoveBookSuccess({
+              book: data.book,
+              bookAction: BookLists.NONE,
+            })
+          ),
           catchError(() => {
             return of(
               cancelLoveBookFailed({ error: 'Nie udało się odlubić...' })
@@ -120,7 +161,12 @@ export class DiscoverEffects {
       ofType(CANCEL_DISLIKE_BOOK_KEY),
       switchMap((data: { book: Book }) => {
         return this._discoverService.cancelDislikeBook(data.book.uid!).pipe(
-          map(() => getCategorizedBooks()),
+          map(() =>
+            cancelDislikeBookSuccess({
+              book: data.book,
+              bookAction: BookLists.NONE,
+            })
+          ),
           catchError(() => {
             return of(
               cancelDislikeBookFailed({
@@ -138,7 +184,12 @@ export class DiscoverEffects {
       ofType(CANCEL_ADD_BOOK_TO_WTR_KEY),
       switchMap((data: { book: Book }) => {
         return this._discoverService.cancelAddBookToWTR(data.book.uid!).pipe(
-          map(() => getCategorizedBooks()),
+          map(() =>
+            cancelAddBookToWTRSuccess({
+              book: data.book,
+              bookAction: BookLists.NONE,
+            })
+          ),
           catchError(() => {
             return of(
               cancelAddBookToWTRFailed({ error: 'Nie dodano do czytelni...' })

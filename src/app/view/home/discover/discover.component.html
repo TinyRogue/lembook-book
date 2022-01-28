@@ -1,3 +1,14 @@
+<ng-container *ngIf="predictedBooks$ | async">
+  <app-card-container
+    [sectionName]="(predictedBooks$ | async)?.genre ?? ''"
+    [books]="(predictedBooks$ | async)?.books ?? []"
+    (cardClick)="showDetails($event)"
+    (loveClick)="love($event)"
+    (dislikeClick)="dislike($event)"
+    (wantToReadClick)="addToWTR($event)"
+  >
+  </app-card-container>
+</ng-container>
 <ng-container *ngIf="discoveredBooks$ | async">
   <ng-container *ngFor="let slice of (discoveredBooks$ | async)!">
     <app-card-container

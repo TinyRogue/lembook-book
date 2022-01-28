@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AppState } from '@store/app.reducer';
 import { Store } from '@ngrx/store';
 import { MyShelfService } from '../my-shelf.service';
-import { catchError, map, retry, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import {
   GET_USERS_BOOK_LISTS_KEY,
@@ -134,7 +134,6 @@ export class MyShelfEffects {
               lists: res.data,
             });
           }),
-          retry(3),
           catchError((myShelfError) =>
             of(getUsersBookListsFailed({ myShelfError }))
           )
