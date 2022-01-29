@@ -17,6 +17,7 @@ import {
 import { Book, CategorizedBooks } from '@models/user-books-res.json';
 import { ToastEnum } from '@pkg/components/toast/toast.enum';
 import { BookLists } from './discover.utils';
+import { HomeUtils } from '../home.utils';
 
 @Component({
   selector: 'app-discover',
@@ -31,6 +32,7 @@ export class DiscoverComponent implements OnInit {
   predictedErrorWatcher$: Observable<any>;
 
   constructor(
+    readonly bookDetailsService: HomeUtils,
     private readonly _discoverService: DiscoverService,
     private readonly _toastService: ToastService,
     private readonly _store: Store<fromRoot.AppState>
@@ -115,9 +117,5 @@ export class DiscoverComponent implements OnInit {
     } else {
       this._store.dispatch(addBookToWTR({ book }));
     }
-  }
-
-  showDetails(book: Book) {
-    alert(book.description);
   }
 }

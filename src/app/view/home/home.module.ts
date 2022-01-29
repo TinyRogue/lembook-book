@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileService } from './profile/profile.service';
 import { ProfileUtils } from './profile/profile.utils';
 import { MyShelfService } from './my-shelf/my-shelf.service';
+import { HomeUtils } from './home.utils';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MyShelfService } from './my-shelf/my-shelf.service';
     MyShelfService,
     ProfileService,
     ProfileUtils,
+    HomeUtils,
     HomeGuard,
   ],
   exports: [HomeComponent],

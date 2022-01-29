@@ -1,8 +1,10 @@
-<ng-container *ngIf="predictedBooks$ | async">
+<ng-container *ngIf="(predictedBooks$ | async)?.books?.length !== 0">
   <app-card-container
-    [sectionName]="(predictedBooks$ | async)?.genre ?? ''"
+    [sectionName]="
+      (predictedBooks$ | async)?.genre ?? 'Starannie Dobrane Dla Ciebie'
+    "
     [books]="(predictedBooks$ | async)?.books ?? []"
-    (cardClick)="showDetails($event)"
+    (cardClick)="bookDetailsService.showBookModal($event)"
     (loveClick)="love($event)"
     (dislikeClick)="dislike($event)"
     (wantToReadClick)="addToWTR($event)"
@@ -14,7 +16,7 @@
     <app-card-container
       [sectionName]="slice.genre ?? ''"
       [books]="slice?.books ?? []"
-      (cardClick)="showDetails($event)"
+      (cardClick)="bookDetailsService.showBookModal($event)"
       (loveClick)="love($event)"
       (dislikeClick)="dislike($event)"
       (wantToReadClick)="addToWTR($event)"
@@ -37,3 +39,8 @@
   >
   </app-card-container>
 </ng-container>
+<app-pkg-book-details
+  *ngIf="bookDetailsService.modalVisible"
+  [book]="bookDetailsService.book"
+  (closeModalEmitter)="bookDetailsService.hideBookModal()"
+></app-pkg-book-details>

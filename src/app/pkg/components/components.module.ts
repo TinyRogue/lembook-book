@@ -5,11 +5,22 @@ import { ToastComponent } from './toast/toast.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CardContainerComponent } from './card-container/card-container.component';
 import { MatButtonModule } from '@angular/material/button';
+import { BookDetailsComponent } from '@pkg/components/book-details/book-details.component';
 
 @NgModule({
-  declarations: [LoaderComponent, ToastComponent, CardContainerComponent],
+  declarations: [
+    LoaderComponent,
+    ToastComponent,
+    CardContainerComponent,
+    BookDetailsComponent,
+  ],
   imports: [CommonModule, FontAwesomeModule, MatButtonModule],
   providers: [],
-  exports: [LoaderComponent, ToastComponent, CardContainerComponent],
+  exports: [
+    LoaderComponent,
+    ToastComponent,
+    CardContainerComponent,
+    BookDetailsComponent,
+  ],
 })
 export class ComponentsModule {}
