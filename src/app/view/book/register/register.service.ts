@@ -21,6 +21,13 @@ export class RegisterService {
       variables: {
         registration: r,
       },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        register: {
+          __typename: 'Depiction',
+          res: '',
+        },
+      },
     });
   }
 }

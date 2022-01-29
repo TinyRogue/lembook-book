@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { gql } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
 import { LoginReq } from '@models/login-req.json';
+import { Injectable } from '@angular/core';
+import { gql } from '@apollo/client/core';
 
 const LOGIN = gql`
   mutation login($login: Login!) {
@@ -19,6 +19,13 @@ export class LoginService {
       mutation: LOGIN,
       variables: {
         login: l,
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        login: {
+          __typename: 'Depiction',
+          res: '',
+        },
       },
     });
   }

@@ -1,0 +1,24 @@
+<app-card-container
+  [sectionName]="'Te wciąż czekające...'"
+  [books]="(lists$ | async)?.wtrBooks?.slices?.[0]?.books ?? []"
+  (cardClick)="showDetails($event)"
+  (loveClick)="love($event)"
+  (dislikeClick)="dislike($event)"
+  (wantToReadClick)="addToWTR($event)"
+></app-card-container>
+<app-card-container
+  [sectionName]="'Te, które uwielbiasz'"
+  [books]="(lists$ | async)?.lovedBooks?.slices?.[0]?.books ?? []"
+  (cardClick)="showDetails($event)"
+  (loveClick)="love($event)"
+  (dislikeClick)="dislike($event)"
+  (wantToReadClick)="addToWTR($event)"
+></app-card-container>
+<app-card-container
+  [sectionName]="'Te, za którymi wcale nie płaczesz'"
+  [books]="(lists$ | async)?.dislikedBooks?.slices?.[0]?.books ?? []"
+  (cardClick)="showDetails($event)"
+  (loveClick)="love($event)"
+  (dislikeClick)="dislike($event)"
+  (wantToReadClick)="addToWTR($event)"
+></app-card-container>

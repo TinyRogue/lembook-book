@@ -2,8 +2,8 @@
 
 :host {
   position: fixed;
-  top: calc(2 * #{$baseline});
-  right: calc(2 * #{$baseline});
+  top: 6em;
+  right: 3em;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@
 }
 
 .title {
-  font-family: $big-serif;
+  font-family: $cormorant;
   font-size: calc(#{$base-font-size} * 1.5);
   padding: 0;
   margin: 0;
@@ -54,14 +54,13 @@
 }
 
 .text {
-  font-family: $serif;
+  font-family: $cormorant;
   font-size: calc(#{$base-font-size} * 1.1);
-  margin: calc(#{$baseline} * 0.5) calc(#{$baseline} * 5.5) 0
-    calc(#{$baseline} * 1.5);
+  margin: 1em calc(#{$baseline} * 5.5) 0 calc(#{$baseline} * 1.5);
 }
 
 .danger {
-  background-color: #dd3055;
+  background-color: $intense-red;
 
   fa-icon {
     color: #861e41;
@@ -69,9 +68,9 @@
 }
 
 .success {
-  background-color: #4f8c7c;
+  background-color: $green;
 
   fa-icon {
-    color: #065763;
+    color: $dark-green;
   }
 }

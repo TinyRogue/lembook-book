@@ -1,0 +1,46 @@
+<ng-container *ngIf="(predictedBooks$ | async)?.books?.length !== 0">
+  <app-card-container
+    [sectionName]="
+      (predictedBooks$ | async)?.genre ?? 'Starannie Dobrane Dla Ciebie'
+    "
+    [books]="(predictedBooks$ | async)?.books ?? []"
+    (cardClick)="bookDetailsService.showBookModal($event)"
+    (loveClick)="love($event)"
+    (dislikeClick)="dislike($event)"
+    (wantToReadClick)="addToWTR($event)"
+  >
+  </app-card-container>
+</ng-container>
+<ng-container *ngIf="discoveredBooks$ | async">
+  <ng-container *ngFor="let slice of (discoveredBooks$ | async)!">
+    <app-card-container
+      [sectionName]="slice.genre ?? ''"
+      [books]="slice?.books ?? []"
+      (cardClick)="bookDetailsService.showBookModal($event)"
+      (loveClick)="love($event)"
+      (dislikeClick)="dislike($event)"
+      (wantToReadClick)="addToWTR($event)"
+    >
+    </app-card-container>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="!(discoveredBooks$ | async)">
+  <app-card-container
+    [sectionName]="'Tu będą książki specjalnie wybrane pod Twój gust'"
+    [books]="[]"
+    [templateText]="
+      'Polub jakąś kategorię w swoim profilu, a później wróć prędko tutaj!'
+    "
+  >
+  </app-card-container>
+  <app-card-container
+    [sectionName]="'Polub coś, aby przeglądać'"
+    [books]="null"
+  >
+  </app-card-container>
+</ng-container>
+<app-pkg-book-details
+  *ngIf="bookDetailsService.modalVisible"
+  [book]="bookDetailsService.book"
+  (closeModalEmitter)="bookDetailsService.hideBookModal()"
+></app-pkg-book-details>

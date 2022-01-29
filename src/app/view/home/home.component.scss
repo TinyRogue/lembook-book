@@ -1,0 +1,74 @@
+@import "src/vars";
+
+header {
+  margin-bottom: 8em;
+}
+
+nav {
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 6em;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: rgba(76, 86, 106, 0.1);
+  box-shadow: 1px 1px 1px 1px $arctic-blue;
+}
+
+.inner-nav {
+  display: flex;
+
+  .nav-item {
+    display: flex;
+    color: $white;
+    font-family: $lato;
+    margin: 0 2em;
+    cursor: pointer;
+
+    .nav-icon {
+      width: calc(#{$base-font-size} * 2.2);
+      margin: 0 0.5em;
+    }
+
+    .nav-link {
+      margin: auto;
+      font-size: calc(#{$base-font-size} * 1);
+    }
+  }
+}
+
+.log-out-container {
+  height: 4em;
+  width: 4em;
+}
+
+.log-out-button {
+  height: 50%;
+  width: 50%;
+}
+
+.dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 100px;
+  background-color: $blue;
+  align-self: center;
+  margin: 0.5em;
+  position: relative;
+  opacity: 0;
+  transition: 400ms;
+}
+
+.dot-visible {
+  opacity: 1;
+}
+
+.logo-title {
+  font-family: $quicksand;
+  color: $blue;
+  font-size: calc(#{$base-font-size} * 1.9);
+  text-decoration: none;
+}

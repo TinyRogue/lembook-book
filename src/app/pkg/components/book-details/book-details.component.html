@@ -1,0 +1,27 @@
+<div (click)="hideModal()" class="close-container">
+  <div (click)="$event.stopPropagation()" class="books-details-container">
+    <fa-icon
+      (click)="hideModal()"
+      [icon]="closeIcon"
+      class="icon fa-2x"
+    ></fa-icon>
+    <div class="img-container">
+      <div class="book-cover">
+        <img [src]="getCoverURL(book?.cover!)" alt="book cover" />
+      </div>
+    </div>
+    <div class="details-wrapper">
+      <div class="title">
+        <h4>{{ book?.title! ?? "" }}</h4>
+      </div>
+      <div class="author">
+        <p>
+          napisane przez <span>{{ book?.authors! ?? "Autor Nieznany" }}</span>
+        </p>
+      </div>
+      <div class="description">
+        <p>{{ book?.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

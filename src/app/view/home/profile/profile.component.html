@@ -1,0 +1,25 @@
+<ng-container *ngFor="let genre of genres$ | async">
+  <div
+    *ngIf="genre.liked"
+    (click)="dislikeGenre(genre.name!)"
+    class="genre-container genre-container-liked"
+  >
+    <fa-icon
+      [icon]="_profileUtils.getIcon(genre.name!)"
+      class="icon fa-5x"
+    ></fa-icon>
+    <p class="name">{{ genre.name }}</p>
+  </div>
+
+  <div
+    *ngIf="!genre.liked"
+    class="genre-container"
+    (click)="likeGenre(genre.name!)"
+  >
+    <fa-icon
+      [icon]="_profileUtils.getIcon(genre.name!)"
+      class="icon fa-5x"
+    ></fa-icon>
+    <p class="name">{{ genre.name }}</p>
+  </div>
+</ng-container>
