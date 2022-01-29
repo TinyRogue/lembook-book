@@ -3,7 +3,7 @@ import { APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 
-const prodURI = 'https://lembook-serv.herokuapp.com/gql';
+const prodURI = 'lembook-serv-szncc.ondigitalocean.app/gql';
 const devURI = 'http://localhost:8080/query';
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
